@@ -1,7 +1,7 @@
 {
   "schemaVersion": "light-remote.current-checkpoint.v1",
   "updatedDate": "2026-11-08",
-  "status": "T11_F16_P01_GOLD_DOC_MIRROR_SOURCE_PASS_NATIVE_CI_PENDING",
+  "status": "T11_F16_P01B_GOLD_DOC_MIRROR_NATIVE_CI_PENDING",
   "branch": "feat/goldabv2-desktop-owner-lab-20261103",
   "referenceSourceBaseline": "47556b829425784e4c1240c88f08e7272970595f",
   "documentationGovernanceCommit": "9297977b6a55e0111847d5c704105dccb4c93c18",
@@ -159,7 +159,7 @@
     "SQL045 absent from signed migrations.lock, pending authorized sequential release. Existing GoldABV2 fake Owner is unverified, verified replacement not registered. GoldABV2 no-NIC SMTP verification path unverified. Bootstrap owner must use actual current Admin account ID, NOT OPERATOR_ACCOUNT_ID.",
     "Device-local Wall activity source is not deployed in GoldABV2 Lab or Windows/macOS until independent source CI and native installed acceptance"
   ],
-  "nextAction": "F16/P01 read-only inner Windows installer SHA256+PE verification and UAT no-signature/no-B manifest, Node 7/7 + static F16 source gate PASS. NEXT check exact new source GitHub Gold GC 4/4, Desktop Web/macOS/Ubuntu 3/3 and Windows full installer F16_OWNER_UAT_INTAKE.json and Docs/Truth before closure. F16/P02 real Windows Owner/B and production signed feed HOLD pending separate explicit Owner approval.",
+  "nextAction": "Original F16 692e20ce Gold GC 42442668337 4/4, Windows 42442668328 FAILED F16 tests 6/7 on Win32 realpath path alias; no complete artifact. Narrow Win32 alias fix local Node 7/7 + static gate PASS. NEXT run exact new Desktop source Windows full installer and Gold GC; physical Owner/B and signed production feed HOLD.",
   "readFirst": [
     "docs/project-book/README.md",
     "docs/project-book/LIGHT_REMOTE_GOLD_P2_IMPLEMENTATION_HANDOFF.md",
@@ -175,7 +175,7 @@
     "treeDigest": "db3bb52458b27920d45e6ad2836d69596244187d2df6c02bbef145b1e24fc0fd",
     "trackedFiles": 1244,
     "sourceOfTruth": "staged Git blob tree (excludes docs and checkpoint)",
-    "recordedAt": "2026-11-08T03:25:58.471Z"
+    "recordedAt": "2026-11-08T03:39:36.519Z"
   },
   "sourceDocsGate": {
     "commit": "01791be27c10e0624df99876407cbfe7670ae16d",
@@ -2410,6 +2410,13 @@
     "authenticodeAndPublisher": "NOT VERIFIED",
     "goldSignedUpdateFeed": "HOLD",
     "productionTouched": false,
-    "acceptancePlan": "docs/project-book/LIGHT_REMOTE_T11_F16_OWNER_B_PHYSICAL_ACCEPTANCE_READINESS_20261108.md"
+    "acceptancePlan": "docs/project-book/LIGHT_REMOTE_T11_F16_OWNER_B_PHYSICAL_ACCEPTANCE_READINESS_20261108.md",
+    "initialDesktopSha": "692e20ce763e2b4dcfd0cbe0b1f2120676fb7c89",
+    "initialGoldGC": "4/4 SUCCESS run 42442668337",
+    "initialWindowsCI": "FAILURE run 42442668328, F16 synthetic 6/7 fail on Win32 realpath alias; no complete F16 artifact",
+    "newWindowsCI": "PENDING Win32 repair source SHA",
+    "newGoldGC": "PENDING Win32 repair source SHA",
+    "lastUnchangedNativeQA": "H3 42366909549 3/3 SUCCESS, F16 scripts only",
+    "win32AliasFix": "Direct symlink files rejected, resolved parent co-location, POSIX strict spelling retained"
   }
 }
