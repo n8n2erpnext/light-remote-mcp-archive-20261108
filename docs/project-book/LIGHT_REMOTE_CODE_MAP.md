@@ -865,3 +865,8 @@ deploy/scripts/selftest-t11-owner-verify-wait.mjs normalizes Windows CRLF on rea
 - device-agent/operator-agent.mjs remoteAbV2PendingPreview enforces Boolean ownerConsentRequired and ownerApproveEnabled, fail closed 503 if missing.
 - device-agent/local-wall.mjs GET /api/abv2/pending maps failure into abv2_wall_preview_unavailable; device-agent/wall-ab-v2-preview.mjs renders user-facing unavailable.
 - operator-host/gold-ab-v2-signed-preview.mjs CURRENT source returns policy-derived ownerConsentRequired: !goldAbV2LabWallBOnly(env). Active ABV2 Lab t08-617-operator-0f3c2ee1-STAGED module is older and lacks the field/import. Lab source helper exists. Need additive source-compatible Lab backport + tests under separate Owner approval; no client bypass, no live server change yet.
+
+## 2026-11-08 — F16/P02-B LIVE ABV2 LAB signed-preview backport
+- Active LXD light-remote-abv2-lab-20261101 Operator candidate: /opt/light-remote-abv2-lab/t11-f16p02-owner-consent-preview-20261108. Cloned old t08-617 candidate; only source delta: operator-host/gold-ab-v2-signed-preview.mjs returns ownerConsentRequired based on goldAbV2LabWallBOnly(env). Current git source already implements this.
+- New later-sorting systemd Operator-only drop-in; rollback /root/light-remote-f16p02-owner-consent-20261108/rollback_operator.py prepared, not executed; original candidate intact.
+- Both LAB Operator and Plugin healthy. Signed-preview fixture and synthetic signed B/PG grant fixture PASS. Window build #649 /approve renders No pending requests after previously unavailable; existing device Short ID S9X0R0, one active Agent. New human B approval not tested due empty queue.
