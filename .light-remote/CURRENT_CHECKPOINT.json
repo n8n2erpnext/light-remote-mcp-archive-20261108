@@ -1,7 +1,7 @@
 {
   "schemaVersion": "light-remote.current-checkpoint.v1",
   "updatedDate": "2026-11-08",
-  "status": "T11_F16_P01B_GOLD_DOC_MIRROR_NATIVE_CI_PENDING",
+  "status": "T11_F16_P01_CI02_GOLD_MIRROR_WINDOWS_GC_PASS_PHYSICAL_HOLD",
   "branch": "feat/goldabv2-desktop-owner-lab-20261103",
   "referenceSourceBaseline": "47556b829425784e4c1240c88f08e7272970595f",
   "documentationGovernanceCommit": "9297977b6a55e0111847d5c704105dccb4c93c18",
@@ -159,7 +159,7 @@
     "SQL045 absent from signed migrations.lock, pending authorized sequential release. Existing GoldABV2 fake Owner is unverified, verified replacement not registered. GoldABV2 no-NIC SMTP verification path unverified. Bootstrap owner must use actual current Admin account ID, NOT OPERATOR_ACCOUNT_ID.",
     "Device-local Wall activity source is not deployed in GoldABV2 Lab or Windows/macOS until independent source CI and native installed acceptance"
   ],
-  "nextAction": "Original F16 692e20ce Gold GC 42442668337 4/4, Windows 42442668328 FAILED F16 tests 6/7 on Win32 realpath path alias; no complete artifact. Narrow Win32 alias fix local Node 7/7 + static gate PASS. NEXT run exact new Desktop source Windows full installer and Gold GC; physical Owner/B and signed production feed HOLD.",
+  "nextAction": "F16/P01 source a72600f0 Windows 42443625765 SUCCESS, inner exe SHA256 05e2f28b... ZIP SHA256 72e7d431..., Gold GC 42443625768 4/4, both Docs/Truth SUCCESS. NEXT F16/P02 selected Owner Windows native login and real Local Wall B; physical installation, signed feed and production HOLD absent explicit Owner approval.",
   "readFirst": [
     "docs/project-book/README.md",
     "docs/project-book/LIGHT_REMOTE_GOLD_P2_IMPLEMENTATION_HANDOFF.md",
@@ -175,7 +175,7 @@
     "treeDigest": "db3bb52458b27920d45e6ad2836d69596244187d2df6c02bbef145b1e24fc0fd",
     "trackedFiles": 1244,
     "sourceOfTruth": "staged Git blob tree (excludes docs and checkpoint)",
-    "recordedAt": "2026-11-08T03:39:36.519Z"
+    "recordedAt": "2026-11-08T03:54:20.096Z"
   },
   "sourceDocsGate": {
     "commit": "01791be27c10e0624df99876407cbfe7670ae16d",
@@ -2414,9 +2414,41 @@
     "initialDesktopSha": "692e20ce763e2b4dcfd0cbe0b1f2120676fb7c89",
     "initialGoldGC": "4/4 SUCCESS run 42442668337",
     "initialWindowsCI": "FAILURE run 42442668328, F16 synthetic 6/7 fail on Win32 realpath alias; no complete F16 artifact",
-    "newWindowsCI": "PENDING Win32 repair source SHA",
-    "newGoldGC": "PENDING Win32 repair source SHA",
+    "newWindowsCI": "SUCCESS run 42443625765 job 128617860730",
+    "newGoldGC": "4/4 SUCCESS run 42443625768",
     "lastUnchangedNativeQA": "H3 42366909549 3/3 SUCCESS, F16 scripts only",
-    "win32AliasFix": "Direct symlink files rejected, resolved parent co-location, POSIX strict spelling retained"
+    "win32AliasFix": "Direct symlink files rejected, resolved parent co-location, POSIX strict spelling retained",
+    "win32RepairSourceSha": "a72600f0f897eadea305cfdb387a67404ebc07e8"
+  },
+  "t11_f16_p01_ci02": {
+    "date": "2026-11-08",
+    "sourceSha": "a72600f0f897eadea305cfdb387a67404ebc07e8",
+    "goldMirrorSha": "0d68a98e3b6d2c126fb469ef3e5e67f3a8d26128",
+    "initialFailedWindowsRun": 42442668328,
+    "windows": {
+      "run": 42443625765,
+      "job": 128617860730,
+      "status": "SUCCESS",
+      "artifactId": 13602178825,
+      "artifactBytes": 180444793,
+      "artifactZipSha256": "72e7d4312373fe6ded9b2447af360e4a66897dd3b27ce473fcccfe20f94c1605",
+      "innerSetupExeSha256": "05e2f28b22f4e475c200d788e97a68977b5964ce2993f28745482431e032b272",
+      "offlineIntake": "PASS",
+      "negativeTests": "6 PASS 0 FAIL 1 SKIP on Windows"
+    },
+    "goldGC": {
+      "run": 42443625768,
+      "status": "4/4 SUCCESS"
+    },
+    "desktopDocsRun": 42443625805,
+    "desktopTruthRun": 42443625806,
+    "goldDocsRun": 42443647148,
+    "goldTruthRun": 42443647143,
+    "desktopNativeMacUbuntuWeb": "NO F16 script-triggered run; prior H3 source QA 42366909549 3/3 SUCCESS",
+    "physicalWindowsOwnerB": "NOT TESTED",
+    "publisherSignature": "NOT VERIFIED",
+    "signedUpdaterFeed": "HOLD",
+    "productionTouched": false,
+    "next": "F16/P02 real Windows Owner B only when Owner explicitly selects/authorizes device and rollback"
   }
 }
