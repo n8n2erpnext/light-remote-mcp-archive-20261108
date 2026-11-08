@@ -10,7 +10,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SCOPED_API_PASS",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -23,7 +23,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -36,7 +36,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -49,7 +49,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -62,7 +62,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -75,7 +75,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -88,7 +88,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -101,7 +101,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -114,7 +114,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -127,7 +127,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -140,7 +140,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SCOPED_API_PASS",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -153,7 +153,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -166,7 +166,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -179,7 +179,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -192,7 +192,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -205,7 +205,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -218,7 +218,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SCOPED_API_PASS",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -231,7 +231,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -244,7 +244,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SCOPED_API_PASS",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -256,8 +256,8 @@
       "remaining": "positive candidate relay + native bootstrap",
       "layers": {
         "implementation": "IMPLEMENTED",
-        "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "dev": "BACKEND_ISSUER_PASS; LOCAL_WIRING_MISSING",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -270,7 +270,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -283,7 +283,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SCOPED_API_PASS",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -296,7 +296,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -309,7 +309,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -322,7 +322,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -335,7 +335,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SCOPED_API_PASS",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -348,7 +348,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SCOPED_API_PASS",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -361,7 +361,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -374,7 +374,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -387,7 +387,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -400,7 +400,7 @@
       "layers": {
         "implementation": "IMPLEMENTED",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "PROFILE_CI_PASS; coverage scoped in regression baseline",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -413,7 +413,7 @@
       "layers": {
         "implementation": "RESTORED_ONLY",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "NOT_IN_ACTIVE_PROFILE_OR_FULL_PACKAGE",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -426,7 +426,7 @@
       "layers": {
         "implementation": "RESTORED_ONLY",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "NOT_IN_ACTIVE_PROFILE_OR_FULL_PACKAGE",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -439,7 +439,7 @@
       "layers": {
         "implementation": "RESTORED_ONLY",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "NOT_IN_ACTIVE_PROFILE_OR_FULL_PACKAGE",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -452,7 +452,7 @@
       "layers": {
         "implementation": "MISSING",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "NOT_IN_ACTIVE_PROFILE_OR_FULL_PACKAGE",
         "newPhysical": "NOT_RUN"
       }
     },
@@ -465,7 +465,7 @@
       "layers": {
         "implementation": "UNKNOWN_NEW_PACKAGE",
         "dev": "SEE_REMAINING",
-        "nativeCI": "NOT_RUN",
+        "nativeCI": "NOT_IN_ACTIVE_PROFILE_OR_FULL_PACKAGE",
         "newPhysical": "NOT_RUN"
       }
     }

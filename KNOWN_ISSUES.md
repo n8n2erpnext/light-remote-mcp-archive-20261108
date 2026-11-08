@@ -1,23 +1,21 @@
-# Known issues and verification limits
+# Known issues and remaining verification
 
-| Item | Status / evidence | Required next step |
+| Item | Current evidence | Next action |
 |---|---|---|
-| Source/runtime drift | Existing A/B Lab Operator, Plugin, Wall and supervisor use different candidate/STAGED paths; hashes fingerprinted | Deploy exact Unified commit only to new runtime after acceptance |
-| Old runtime commit provenance | Some deployed hashes have no known Git blob match; folder names not accepted as commit evidence | Preserve unknown source, compare individually, retain UNKNOWN where unresolved |
-| New native Windows build | NOT_RUN until CI artifact produced | Build exact baseline SHA; verify installer + manifest |
-| New physical Windows acceptance | NOT_RUN | One integrated candidate acceptance, not inferred from historical 4dddf511 |
-| Candidate Agent/B and SSO | Real candidate Agent enrollment/heartbeat/connect and mTLS ticket issuance PASS; signed B/remote command and SSO redemption not yet exercised | Complete remaining device-bound live flows |
-| Project Continuity | Source restored; active core hook / Windows DACL incomplete | Keep opt-in, validate hook/permissions before enabling |
-| Chrome LM extension | Complete source restored; current Wall compatibility unverified | Dedicated extension/Wall compatibility test |
-| RC50 portability / Guest | Prototypes restored; Guest native wiring incomplete | Do not apply Guest044 or claim deployed feature |
-| macOS/Linux full package | Source/QA retained, new complete installer NOT_BUILT | Dedicated exact-commit platform packaging integration |
-| Two Windows primary EXEs | Existing C# host + Tauri UI retained | Later single `LightRemote.exe` design; preserve Node/RM/updater boundaries |
-| Endpoint/schema catalog | Critical V4 endpoints centralized; legacy families not exhaustively typed | Complete route/schema coverage incrementally without breaking authority |
-| Windows process inventory | WMI process read denied in current local session | File identity available; no bypass or unsupported runtime provenance claim |
-| GitHub reset/config secrets | No destructive action performed, Owner approval pending | Verify recreate capability and legitimate secret/config restore sources first |
+| Native end-to-end/new backend | CI native/install/rollback PASS; real backend/Agent API21 PASS separately; not one physical authenticated GUI acceptance | Prepare controlled routing and isolated Windows state for one acceptance round |
+| Candidate exposure/profile | Retained Docker network internal; no host ports; Windows artifact retains canonical GoldABV2 Lab profile | Do not claim installing against old Lab tests the new backend; provide controlled candidate transport first |
+| Wall SSO local integration | Backend mTLS issue positive/negative PASS; local Agent/browser bootstrap production wiring unfinished; UI SSO candidate remains disabled | Finish real native/Agent/Wall wiring with live family and device signature checks |
+| New signed B/remote command | Actual candidate Agent enrollment/heartbeat/connect PASS; new live B grant/command not exercised | Exercise both Wall/account approval flows on an isolated enrolled device |
+| Continuity | Source restored; optional modern Wall/core hook absent; P1 gets404; module regression references old Git history | Complete hook/package closure, replace old-history dependency with a pinned fixture; Windows DACL remains unverified |
+| Extensions | Existing GoldABV2 LM0.3 retained and integrity/manual-staging source contract PASS; separate legacy LM0.2 restored | Verify real Chrome/current Wall compatibility; do not enable legacy product bindings as GoldABV2 |
+| RC50/Guest | Missing portability/prototype source recovered; Guest native wiring incomplete | Keep Guest044 deferred; do not simulate readiness with SQL-only ledger changes |
+| Mac/Linux packages | Locked native source builds/tests PASS | Full current installers still NOT_BUILT |
+| Windows two primary EXEs | C# host plus Tauri UI retained to preserve current behavior | Single LightRemote.exe is a later product architecture task; Node/RM/updater may remain separate |
+| Endpoint/schema catalog | Critical V4 catalog/version/handler wiring exists; legacy schemas and some authorize/SSO/Wall route constants remain | Finish full catalog coverage; do not promise every URL/path can already change from JSON alone |
+| Runtime drift/data migration | Lab43+Owner, UAT42 without Owner; Lab source stages mixed | New runtime/data migration plan after acceptance; no overwrite of old paths/databases |
+| Repository reset capability | Git SSH push works; create/delete/admin export not established; browser timeout | Resolve recreation/config/secret restore preflight before any final Owner reset confirmation |
+| Windows current process inventory | WMI process read denied; binary file identity and historical artifact available | Keep runtime provenance UNKNOWN where unsupported; no privilege bypass |
 
-The original Wall wrapping, asynchronous module state and local B approval reports are represented by retained T11 corrections and source regressions. They require the new integrated package to be deployed before claiming the user's installed build is repaired. No change has been made to that installation during reconstruction.
+Resolved: stale Owner Cargo.lock made previous native builds resolve dependencies outside the committed graph. Reviewed lock committed; --locked and strict post-build source provenance PASS in final CI. Actual original Wall wrapping/module-state/B fixes were inherited from tested T11 source; reconstruction did not change the Owner's installed app or old server.
 
-Recovered-subsystem source checks: extension integrity/manual-staging contract PASS and Continuity multi-OS fail-closed contract PASS. Continuity P1 currently fails because its optional Project UI hook is absent from selected modern Wall (404). Its device-module packaging regression also references an old Git SHA; the new repository intentionally has no old parents. These two recovered tests are retained as known incomplete integration evidence, not counted as active profile PASS.
-
-Resolved source defect: the old UI-only Cargo.lock did not include the default Owner feature graph, so previous native builds silently resolved additional dependencies. CI-generated lock reviewed and committed; existing-version checksums unchanged; --locked and strict post-build source checks enforce the corrected graph. See evidence/cargo-lock-review.json.
+DEV helper scope: status displays the last deployment receipt, not a liveness probe. Use labelled Docker inspection for actual running state. Run disposable test before retaining a start candidate; the helper's latest pointer is shared by invocations. This helper remains a DEV tool, not a production service manager.

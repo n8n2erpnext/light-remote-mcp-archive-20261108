@@ -1,100 +1,87 @@
 {
   "schemaVersion": "light-remote.master-checkpoint.v1",
-  "updatedDate": "2026-11-08",
-  "phase": "E_NATIVE_CI_CANDIDATE",
-  "status": "IN_PROGRESS",
+  "updatedAt": "2026-11-08T10:28:09.307114+00:00",
+  "version": "0.10.0-dev.1",
+  "phase": "F_OWNER_REVIEW",
+  "status": "BASELINE_CI_AND_SCOPED_DEV_VERIFIED_OWNER_ACCEPTANCE_PENDING",
   "officialRepository": "n8n2erpnext/light-remote-mcp",
   "workspace": "/home/ubuntu/n8n2erpnext/light-remote-unified-20261108/source/light-remote-mcp",
-  "sourceAuthority": "independent_local_repository_until_Owner_approved_GitHub_replacement",
+  "sourceAuthority": "independent_local_repository_with_CI_validation_ref_until_Owner_approved_clean_GitHub_conversion",
+  "baselineSourceCommit": "eb6b2e6eee45213a385cd7ef0d0c1ef2aaa77ba8",
+  "baselineSourceTree": "d517bb7b10bb99af6db346eff4e1f53af6f416a9",
+  "validationBranch": "codex/reconstruction-validation-20261108",
+  "apiContractVersion": "light-remote.api.v1",
+  "featureProfile": "goldabv2-desktop-v4",
   "recovery": {
-    "manifest": "/home/ubuntu/n8n2erpnext/light-remote-unified-20261108/inventory/RECOVERY_ALL_STORES_VERIFICATION.json",
     "verifiedRefs": 2285,
-    "restoreFsck": "PASS"
+    "restoreFsck": "PASS",
+    "oldBundleSha256": "95a4764f213abb649a2df25f92906918bca79987908edda42b110d7880bed8fe",
+    "releaseRecords": 421,
+    "verifiedReleaseObjects": 372,
+    "bytes": 14440600519,
+    "comparedRefs": 277,
+    "comparedHeadTagRevisions": 145
   },
-  "version": "0.10.0-dev.1",
-  "nextAction": "Run final native/Windows CI with committed Owner dependency graph and strict clean-source provenance; verify artifact hashes and retain one matching isolated DEV candidate.",
   "evidence": {
-    "newCI": {
-      "run": 42468219416,
-      "purpose": "fast dependency resolution; native intentionally blocked until reviewed lock committed",
-      "status": "reviewed candidate accepted into source; next locked native run pending",
-      "coreSourceGuard": "argument order adjusted to preserve exact test invocation plus --locked"
-    },
-    "candidateIntegration": {
-      "status": "PASS",
-      "checks": 21,
-      "sourceCommit": "7d87f94b7a3577cd228ab1c95217a46f3d249853",
-      "report": "evidence/dev-integration.json",
-      "physical": false
-    },
-    "newPhysicalAcceptance": "NOT_RUN",
-    "dependencyInstall": "3/3 PASS from lockfiles",
-    "initialCoreUnitFiles": "29 files PASS",
-    "desktopWebBuild": "PASS",
-    "desktopUnit": "PASS",
-    "sourceRegressionsFirst": "58/66 PASS; packaging/legacy CI assertions adapted; rerun in progress",
-    "releaseArchive": "22 releases / 421 asset records / 372 SHA256-verified objects PASS",
-    "contractUnit": "3/3 PASS",
-    "sourceRegressionsSecond": "67/69 PASS; 2 targeted fixes now PASS; final consolidated run pending",
-    "automatedSuite": {
-      "sourceCommit": "aabd0c47609d891f8fac54f7d0430c0f93ed5423",
+    "ci": {
+      "runId": 42468832737,
+      "url": "https://github.com/n8n2erpnext/light-remote-mcp/actions/runs/42468832737",
+      "sourceCommit": "eb6b2e6eee45213a385cd7ef0d0c1ef2aaa77ba8",
+      "sourceTree": "d517bb7b10bb99af6db346eff4e1f53af6f416a9",
+      "conclusion": "success",
+      "jobs": 8,
+      "passedJobs": 8,
       "nodeTests": 270,
-      "nodePass": 270,
-      "nodeFail": 0,
-      "sourceInvocations": 69,
-      "sourceExitZero": 69,
-      "platformOnlySkipped": [
+      "portableSourceInvocations": 69,
+      "armPlatformSkips": [
         "Windows file lock",
         "Windows Job Object",
         "Windows process tree"
       ],
-      "newPhysicalAcceptance": false
+      "devIntegrationChecks": 21,
+      "windowsCiInstallUpdateRollbackUninstall": "PASS",
+      "physicalOwnerAcceptance": "NOT_RUN",
+      "nativeMacLinux": "locked source build/tests PASS; full installers NOT_BUILT"
     },
-    "recoveredSubsystemTests": {
-      "extension": "PASS",
-      "continuityMultios": "PASS",
-      "continuityP1": "FAIL optional modern Wall hook absent",
-      "continuityDeviceModules": "FAIL old history dependency; retained, not active profile"
+    "windows": {
+      "artifactId": 13613101863,
+      "zipSha256": "5aef8c6071ddb36f8df888d223812e7a3bdf4f4f149cc49ee2a6812bdda0e76c",
+      "installerSha256": "2c2c7a8a94638a1dbbed378a289d562d53b696a1dcece6d6684f39ca5dc6e41e",
+      "manifest": "docs/evidence/windows-build-manifest.json"
     },
-    "nativeDependencyLockReview": {
-      "reviewedAt": "2026-11-08T09:49:52.703393+00:00",
-      "resolverRun": 42468219416,
-      "resolverSourceCommit": "93e0288b5958bee2b533071c477dd54f3dad7d61",
-      "artifactId": 13611704289,
-      "artifactSha256": "686de5a90f93d139a57b212d3483cf1bf0b800b7cc100176ac28649224913fc7",
-      "lockSha256": "29f6cff2b0591f3655d6d32483df4f31f9b0f7cef8b78c959f2d0c62fe6057fd",
-      "packagesBefore": 407,
-      "packagesAfter": 465,
-      "existingPackageChecksumChanges": 0,
-      "rootDependencyGraph": {
-        "name": "light-remote-desktop-v4-pilot",
-        "version": "0.10.0-dev.1",
-        "dependencies": [
-          "base64 0.22.1",
-          "keyring",
-          "rand 0.8.8",
-          "reqwest 0.12.28",
-          "serde",
-          "serde_json",
-          "sha2",
-          "tauri",
-          "tauri-build",
-          "tokio",
-          "url"
-        ]
-      },
-      "toolchain": "cargo/rustc 1.99.1",
-      "decision": "Accept generated Owner dependency graph after diff/checksum review; require locked builds thereafter."
-    }
+    "dev": {
+      "candidateId": "lru-eb6b2e6eee-100808",
+      "sourceCommit": "eb6b2e6eee45213a385cd7ef0d0c1ef2aaa77ba8",
+      "checks": 21,
+      "result": "PASS",
+      "report": "docs/evidence/dev-integration.json",
+      "network": "internal_only_no_host_ports"
+    },
+    "physicalOwnerAcceptance": "NOT_RUN",
+    "historicalPhysicalSource": "4dddf5114248a014c0695e853109358039afa7ad"
   },
+  "remaining": [
+    "Owner acceptance/native end-to-end with the new backend; controlled candidate routing required before Windows UAT",
+    "Local Agent/browser SSO wiring and positive redemption remain unfinished",
+    "Live signed B/command on new candidate not yet exercised",
+    "Continuity modern Wall/core hook and old-history-dependent packaging test unresolved",
+    "Legacy LM extension/RC50 prototypes not active; full Mac/Linux packages not rebuilt",
+    "Single primary Windows EXE remains future product work",
+    "Full endpoint/schema catalog coverage and remaining server route constants",
+    "Repository recreation/admin settings/secrets capability preflight and final Owner approval"
+  ],
   "repositoryReplacement": {
     "ownerConfirmed": false,
-    "destructiveOperationsPerformed": false
+    "destructiveOperationsPerformed": false,
+    "createDeleteCapability": "NOT_ESTABLISHED",
+    "adminSettingsExport": "PARTIAL; API metadata/zero branch protections/zero rulesets captured; browser timeout; secret values not exportable",
+    "activeCiSecretsRequired": [],
+    "forcePushFallbackAllowed": false
   },
   "legacySourceAndRuntimeChanged": false,
-  "updatedAt": "2026-11-08T09:49:52.703393+00:00",
   "scope": {
-    "ARM": "all project source per Owner confirmation",
+    "ARM": "all project source per Owner",
     "AMD": "OUT_OF_SCOPE per Owner"
-  }
+  },
+  "nextAction": "Review the concrete baseline and listed missing scopes; plan one controlled Windows/new-backend acceptance, then verify repository recreation/restore preflight and obtain explicit Owner conversion confirmation. Do not reset GitHub yet."
 }
