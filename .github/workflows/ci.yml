@@ -1,0 +1,55 @@
+name: Light Remote MCP unified baseline
+on:
+  push:
+    branches: [main, 'codex/reconstruction-validation-*']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: light-remote-baseline-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  core-contract-integration:
+    name: Core, contracts, PostgreSQL/Redis integration
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            plugin-server/package-lock.json
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+        working-directory: plugin-server
+      - name: One current project truth
+        run: npm run check:truth
+      - name: Core unit and selected source regression tests
+        run: npm test
+      - name: Isolated actual backend and schema integration
+        run: python3 deploy/unified/dev.py test
+      - name: Record exact source manifest
+        run: node deploy/unified/build-manifest.mjs --platform linux-core --out build-output/BUILD_MANIFEST.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: light-remote-mcp-core-${{ github.sha }}
+          path: |
+            build-output/
+            .unified/evidence/
+          if-no-files-found: error
+  desktop:
+    uses: ./.github/workflows/desktop-v4-native-ci.yml
+    permissions:
+      contents: read
+  windows:
+    uses: ./.github/workflows/windows-native-client.yml
+    permissions:
+      contents: read
