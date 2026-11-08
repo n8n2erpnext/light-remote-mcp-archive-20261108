@@ -883,3 +883,10 @@ Confirmed live flow: AB helper exact S9X0R0 pending request -> owner local Wall 
 - deploy/scripts/selftest-goldabv2-unified-one-app.mjs: new source guard.
 - device-agent/operator-agent.mjs: existing LR_GOLD_ABV2_DESKTOP_ABV2_NATIVE_V4 and native enrolled/Owner/wall gates retained (no change); device-agent/desktop-abv2-native-ipc-v4.mjs: fixed named pipe (no change).
 - Physical #649 frontend native enabled, no named pipe (error 2) because integrated launch flag not set. Existing AB V2 helper and Wall approval remain PASS; native UI pending new Windows build/deployment.
+
+## 2026-11-08 — F16/P04B installed Windows proof and next module path
+
+- Compiled GoldABV2 C# Agent launcher: client/windows-native/GptOperator.Client/{AgentHost.cs,AgentSupervisor.cs,TrayApplicationContext.cs}; tested nativeAbv2Launch=pass in installed binary, fixed Windows pipe available.
+- Native Desktop IPC path: client/desktop-v4/src-tauri/src/owner_abv2.rs -> \.\pipe\light-remote-desktop-v4-abv2 -> device-agent/desktop-abv2-native-ipc-v4.mjs -> device-agent/operator-agent.mjs signed Owner pending preview.
+- Real Desktop: OWNER VERIFIED, short ID S9X0R0, signed Owner/Agent approval available; Refresh pending shows zero requests. Local Wall /approve HTTP 200 but Owner Wall SSO still unverified.
+- Next: Owner-grant-list read path, App/Wall SSO, and physical direct B approval only upon new Owner-requested B; no new B automatically. Handoff: docs/project-book/LIGHT_REMOTE_T11_F16_P04B_INSTALLED_NATIVE_ABV2_ACCEPTANCE_20261108.md
