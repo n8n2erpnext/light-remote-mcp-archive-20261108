@@ -1178,3 +1178,7 @@ deploy/scripts/selftest-t11-owner-verify-wait.mjs normalizes Windows CRLF on rea
 - Active LXD light-remote-abv2-lab-20261101 Operator candidate: /opt/light-remote-abv2-lab/t11-f16p02-owner-consent-preview-20261108. Cloned old t08-617 candidate; only source delta: operator-host/gold-ab-v2-signed-preview.mjs returns ownerConsentRequired based on goldAbV2LabWallBOnly(env). Current git source already implements this.
 - New later-sorting systemd Operator-only drop-in; rollback /root/light-remote-f16p02-owner-consent-20261108/rollback_operator.py prepared, not executed; original candidate intact.
 - Both LAB Operator and Plugin healthy. Signed-preview fixture and synthetic signed B/PG grant fixture PASS. Window build #649 /approve renders No pending requests after previously unavailable; existing device Short ID S9X0R0, one active Agent. New human B approval not tested due empty queue.
+
+## 2026-11-08 — F16/P03 B-only positive-path code mapping
+
+Confirmed live flow: AB helper exact S9X0R0 pending request -> owner local Wall -> AB helper ready -> real Windows execution exit 0. Code unchanged: device-agent/operator-agent.mjs signed preview/approval; device-agent/local-wall.mjs /api/abv2/pending and /api/abv2/approve; operator-host/gold-ab-v2-signed-preview.mjs, operator-host/gold-ab-v2-signed-approval.mjs. Evidence: docs/project-book/LIGHT_REMOTE_T11_F16_P03_REAL_OWNER_B_APPROVAL_20261108.md. Do not infer full native vault/revocation/updater UAT.
