@@ -1,7 +1,7 @@
 {
   "schemaVersion": "light-remote.current-checkpoint.v1",
   "updatedDate": "2026-11-08",
-  "status": "T11_F16_P03_LIVE_OWNER_WALL_B_APPROVED_AGENT_EXEC_PASS_OTHER_PHYSICAL_GATES_OPEN",
+  "status": "T11_F16_P04_OWNER_APP_COLD_RESTORE_PASS_NATIVE_AGENT_IPC_SOURCE_FIX_WINDOWS_CI_PENDING",
   "branch": "feat/desktop-v4-api-integration-20261103",
   "referenceSourceBaseline": "47556b829425784e4c1240c88f08e7272970595f",
   "documentationGovernanceCommit": "9297977b6a55e0111847d5c704105dccb4c93c18",
@@ -172,10 +172,10 @@
   ],
   "sourceSync": {
     "algorithm": "sha256-git-blobs-v1",
-    "treeDigest": "e7fb9daccd1733395348aca1c89f7e745c277304a1fa5dbcc4a235f099b0ee15",
+    "treeDigest": "e35c7af8e463ff3c0fc5b18de16f529c6a30112bc65d97d13c96214ec40bf784",
     "trackedFiles": 1358,
     "sourceOfTruth": "staged Git blob tree (excludes docs and checkpoint)",
-    "recordedAt": "2026-11-08T05:08:50.929Z"
+    "recordedAt": "2026-11-08T05:42:21.515Z"
   },
   "sourceDocsGate": {
     "commit": "01791be27c10e0624df99876407cbfe7670ae16d",
@@ -2513,5 +2513,26 @@
     "signedUpdateFeed": "HOLD",
     "productionTouched": false,
     "handoff": "docs/project-book/LIGHT_REMOTE_T11_F16_P03_REAL_OWNER_B_APPROVAL_20261108.md"
+  },
+  "t11_f16_p04_native_owner_bridge": {
+    "date": "2026-11-08",
+    "deviceShortId": "S9X0R0",
+    "manualOwnerLoginObserved": true,
+    "priorUIOwnerVerifiedNotAutoRestored": true,
+    "desktopProcessRestartOldPid": 9492,
+    "desktopProcessRestartNewPid": 15208,
+    "ownerAutomaticallyRestoredAfterDesktopRestart": true,
+    "ownerVaultValuesRead": false,
+    "agentWallPidPreserved": 14084,
+    "nativeAgentPipeBeforeFix": "MISSING_WIN32_ERROR_2",
+    "sourceLauncherPatch": "PROFILE_GUARDED_LOCAL_PASS",
+    "windowsNativeCompile": "PENDING",
+    "installedRuntimeNativePipe": "NOT_TESTED_WITH_PATCH",
+    "nativeOwnerBApprovalUI": "NOT_TESTED",
+    "wholeWindowsRebootRestore": "NOT_TESTED",
+    "physicalNegativeAuthorization": "NOT_TESTED",
+    "productionTouched": false,
+    "signedUpdateFeed": "HOLD",
+    "handoff": "docs/project-book/LIGHT_REMOTE_T11_F16_P04_OWNER_RESTORE_NATIVE_ABV2_LAUNCH_20261108.md"
   }
 }

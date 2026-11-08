@@ -139,6 +139,7 @@ internal sealed class TrayApplicationContext : ApplicationContext
         p.Environment["OPERATOR_FLEET_WALL_PORT"] = CanonicalEndpoints.Gold.LocalPort("fleet").ToString();
 #endif
         AgentHost.ConfigureRealRemoteEnvironment(p);
+        AgentHost.ConfigureDesktopOwnerAbv2Environment(p);
         return p;
     }
 

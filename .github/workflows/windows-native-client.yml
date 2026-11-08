@@ -621,6 +621,7 @@ jobs:
           $json = Get-Content $result -Raw | ConvertFrom-Json
           if (-not $json.ok) { throw "self-test not ok: $(Get-Content $result -Raw)" }
           if ($json.platformAdapter -ne 'win32') { throw "expected win32 adapter, got $($json.platformAdapter)" }
+          if ($json.nativeAbv2Launch -ne 'pass') { throw 'Windows GoldABV2 native Owner A/B launcher contract failed' }
           if ($env:GITHUB_REF_NAME -eq 'feat/desktop-v4-api-integration-20261103' -and $json.targetProfile -ne 'pass') {
             throw "GoldABV2 V4 must use separate device profile and GoldABV2-only endpoint; result=$($json.targetProfile)"
           }
@@ -1229,6 +1230,7 @@ jobs:
           if ($p.ExitCode -ne 0) { throw "installed client self-test failed exit=$($p.ExitCode)" }
           $json = Get-Content $result -Raw | ConvertFrom-Json
           if (-not $json.ok -or $json.platformAdapter -ne 'win32') { throw "installed client invalid: $(Get-Content $result -Raw)" }
+          if ($json.nativeAbv2Launch -ne 'pass') { throw 'Installed Windows native Owner A/B launch contract failed' }
           if ($env:GITHUB_REF_NAME -eq 'feat/desktop-v4-api-integration-20261103') {
             if ($json.targetProfile -ne 'pass') { throw 'Installed Desktop V4 is not an isolated GoldABV2 profile' }
             $installedProfile=Join-Path $env:WINDOWS_INSTALL_DIR 'agent\device-agent\goldabv2-package-profile.json'

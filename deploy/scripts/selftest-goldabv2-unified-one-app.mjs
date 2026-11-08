@@ -6,6 +6,8 @@ const main=read('client/desktop-v4/src-tauri/src/main.rs');
 const cargo=read('client/desktop-v4/src-tauri/Cargo.toml');
 const program=read('client/windows-native/GptOperator.Client/Program.cs');
 const bridge=read('client/windows-native/GptOperator.Client/TrayApplicationContext.cs');
+const agentHost=read('client/windows-native/GptOperator.Client/AgentHost.cs');
+const supervisor=read('client/windows-native/GptOperator.Client/AgentSupervisor.cs');
 const installer=read('client/windows-native/installer/GptOperator.iss');
 const agent=read('device-agent/operator-agent.mjs');
 const wall=read('device-agent/local-wall.mjs');
@@ -32,8 +34,21 @@ assert.match(bridge,/case "link":/);
 assert.match(bridge,/case "poll":/);
 assert.match(bridge,/case "preview":/);
 assert.match(bridge,/case "open-activation":/);
+// Integrated Windows V4 launches a SAME-HOST native Owner bridge only for the
+// compiled GoldABV2 profile and exact canonical endpoint, never legacy Gold.
+assert.match(agentHost,/internal static void ConfigureDesktopOwnerAbv2Environment\(ProcessStartInfo psi\)/);
+assert.match(agentHost,/psi\.Environment\.Remove\(flag\)/);
+assert.match(agentHost,/#if LIGHT_REMOTE_GOLDABV2_V4[\s\S]*?ConnectionConfig\.PackageTargetSelfTest\(\)/);
+assert.match(agentHost,/String\.Equals\(hub, ConnectionConfig\.StablePublicEndpoint, StringComparison\.Ordinal\)/);
+assert.match(agentHost,/SelfTestDesktopOwnerAbv2Environment/);
+assert.match(agentHost,/ConfigureDesktopOwnerAbv2Environment\(psi\);/);
+assert.match(supervisor,/AgentHost\.ConfigureDesktopOwnerAbv2Environment\(psi\)/);
+assert.match(bridge,/AgentHost\.ConfigureDesktopOwnerAbv2Environment\(p\)/);
+assert.match(program,/nativeAbv2LaunchOk = AgentHost\.SelfTestDesktopOwnerAbv2Environment\(\)/);
+
 assert.match(installer,/Root: HKCU; Subkey: "Software\\Microsoft\\Windows\\CurrentVersion\\Run"[\s\S]*ValueData: """\{app\}\\desktop-v4\\LightRemote\.Desktop\.exe"""/);
 assert.match(installer,/#ifdef UnifiedDesktopV4[\s\S]*?Filename: "\{app\}\\desktop-v4\\LightRemote\.Desktop\.exe"; Description: "Open Light Remote"/);
+assert.match(wf,/nativeAbv2Launch -ne 'pass'/);
 assert.match(wf,/windows-unified-desktop-single-instance=PASS/);
 assert.match(wf,/windows-unified-tray-owner-and-shortcut-relaunch=PASS/);
 // Recover one-time enrollment on local OS only, not remote signed status.

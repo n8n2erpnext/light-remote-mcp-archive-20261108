@@ -874,3 +874,12 @@ deploy/scripts/selftest-t11-owner-verify-wait.mjs normalizes Windows CRLF on rea
 ## 2026-11-08 — F16/P03 B-only positive-path code mapping
 
 Confirmed live flow: AB helper exact S9X0R0 pending request -> owner local Wall -> AB helper ready -> real Windows execution exit 0. Code unchanged: device-agent/operator-agent.mjs signed preview/approval; device-agent/local-wall.mjs /api/abv2/pending and /api/abv2/approve; operator-host/gold-ab-v2-signed-preview.mjs, operator-host/gold-ab-v2-signed-approval.mjs. Evidence: docs/project-book/LIGHT_REMOTE_T11_F16_P03_REAL_OWNER_B_APPROVAL_20261108.md. Do not infer full native vault/revocation/updater UAT.
+
+## 2026-11-08 — T11-F16/P04 native Owner bridge launcher root cause/fix
+
+- client/windows-native/GptOperator.Client/AgentHost.cs: new ConfigureDesktopOwnerAbv2Environment clears inherited flag, enables only compiled LIGHT_REMOTE_GOLDABV2_V4 canonical profile and exact bridge+hub; selftest tests allowed/denied paths.
+- client/windows-native/GptOperator.Client/AgentSupervisor.cs and TrayApplicationContext.cs: invoke same helper for all bundled Node Agent start paths.
+- client/windows-native/GptOperator.Client/Program.cs + .github/workflows/windows-native-client.yml: nativeAbv2Launch selftest included in hosted/staged/installed Windows checks.
+- deploy/scripts/selftest-goldabv2-unified-one-app.mjs: new source guard.
+- device-agent/operator-agent.mjs: existing LR_GOLD_ABV2_DESKTOP_ABV2_NATIVE_V4 and native enrolled/Owner/wall gates retained (no change); device-agent/desktop-abv2-native-ipc-v4.mjs: fixed named pipe (no change).
+- Physical #649 frontend native enabled, no named pipe (error 2) because integrated launch flag not set. Existing AB V2 helper and Wall approval remain PASS; native UI pending new Windows build/deployment.

@@ -155,8 +155,51 @@ internal static class AgentHost
         psi.Environment["OPERATOR_FLEET_WALL_PORT"] = CanonicalEndpoints.Gold.LocalPort("fleet").ToString();
 #endif
         ConfigureRealRemoteEnvironment(psi);
+        ConfigureDesktopOwnerAbv2Environment(psi);
         bootRecoveryPath = WindowsBootEvidence.Configure(psi);
         return psi;
+    }
+
+    // The integrated Desktop V4 enables its native Owner A/B projection only
+    // for the exact compiled GoldABV2 package profile. Never inherit this
+    // flag from the parent OS environment or from legacy Gold installations.
+    // Native Agent STILL requires enrolled identity, local Wall Owner auth,
+    // GoldABV2 HTTPS and independently verified Owner bearer before IPC.
+    internal static void ConfigureDesktopOwnerAbv2Environment(ProcessStartInfo psi)
+    {
+        const string flag = "LR_GOLD_ABV2_DESKTOP_ABV2_NATIVE_V4";
+        psi.Environment.Remove(flag);
+#if LIGHT_REMOTE_GOLDABV2_V4
+        if (ConnectionConfig.PackageTargetSelfTest()
+            && psi.Environment.TryGetValue("OPERATOR_AGENT_BASE_URL", out var bridge)
+            && psi.Environment.TryGetValue("OPERATOR_AGENT_HUB_URL", out var hub)
+            && String.Equals(bridge, ConnectionConfig.StablePublicEndpoint, StringComparison.Ordinal)
+            && String.Equals(hub, ConnectionConfig.StablePublicEndpoint, StringComparison.Ordinal))
+        {
+            psi.Environment[flag] = "1";
+        }
+#endif
+    }
+
+    // Offline contract: GoldABV2 enables the bridge only for canonical origins,
+    // legacy Gold always clears inherited flags. No pipe or token is opened.
+    internal static bool SelfTestDesktopOwnerAbv2Environment()
+    {
+        var settings = ConnectionConfig.Load();
+        var psi = new ProcessStartInfo("node.exe");
+        psi.Environment["OPERATOR_AGENT_BASE_URL"] = settings.BridgeUrl;
+        psi.Environment["OPERATOR_AGENT_HUB_URL"] = settings.HubUrl;
+        psi.Environment["LR_GOLD_ABV2_DESKTOP_ABV2_NATIVE_V4"] = "1";
+        ConfigureDesktopOwnerAbv2Environment(psi);
+#if LIGHT_REMOTE_GOLDABV2_V4
+        var enabled = psi.Environment.TryGetValue("LR_GOLD_ABV2_DESKTOP_ABV2_NATIVE_V4", out var value)
+            && value == "1";
+        psi.Environment["OPERATOR_AGENT_HUB_URL"] = "https://invalid.example";
+        ConfigureDesktopOwnerAbv2Environment(psi);
+        return enabled && !psi.Environment.ContainsKey("LR_GOLD_ABV2_DESKTOP_ABV2_NATIVE_V4");
+#else
+        return !psi.Environment.ContainsKey("LR_GOLD_ABV2_DESKTOP_ABV2_NATIVE_V4");
+#endif
     }
 
     // Every invocation of the bundled Agent (daemon, status, login, poll, rescan)

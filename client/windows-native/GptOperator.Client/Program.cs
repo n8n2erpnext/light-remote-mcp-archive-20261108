@@ -182,12 +182,14 @@ internal static class Program
             var targetProfileOk = ConnectionConfig.PackageTargetSelfTest();
             var trayIconOk = TrayIconFactory.SelfTest();
             var agentHostRecoveryOk = AgentHost.SelfTestRestartPolicy();
+            var nativeAbv2LaunchOk = AgentHost.SelfTestDesktopOwnerAbv2Environment();
             var result = new {
-                ok = File.Exists(AppPaths.NodeExe) && File.Exists(AppPaths.AgentScript) && File.Exists(AppPaths.UpdatePublicKey) && semverOk && trayLogicOk && targetProfileOk && trayIconOk && agentHostRecoveryOk,
+                ok = File.Exists(AppPaths.NodeExe) && File.Exists(AppPaths.AgentScript) && File.Exists(AppPaths.UpdatePublicKey) && semverOk && trayLogicOk && targetProfileOk && trayIconOk && agentHostRecoveryOk && nativeAbv2LaunchOk,
                 semanticVersion = semverOk ? "pass" : "fail",
                 trayLogic = trayLogicOk ? "pass" : "fail",
                 targetProfile = targetProfileOk ? "pass" : "fail",
                 agentHostRecovery = agentHostRecoveryOk ? "pass" : "fail",
+                nativeAbv2Launch = nativeAbv2LaunchOk ? "pass" : "fail",
                 trayIcons = trayIconOk ? "pass" : "fail",
                 clientVersion = ClientVersion.Display,
                 agentVersion = status.Version,

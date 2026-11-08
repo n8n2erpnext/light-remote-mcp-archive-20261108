@@ -4,7 +4,7 @@
 **Document status:** ACTIVE / MUST UPDATE AFTER EVERY TASK, including partial work and blocked work.
 **Created:** 2026-11-04, Asia/Ho_Chi_Minh (ICT, UTC+07).
 **Project:** Light Remote GoldABV2, Desktop V4 Native Owner Authentication, and T04 Desktop → Local Wall single sign-on.
-**Next active task:** T11-F16/P03 real Wall B approved, AB V2 ready and Windows command PASS. Continue separate remaining F16 physical gates; preserve grant; production/signed feed HOLD.
+**Next active task:** T11-F16/P04: Windows native Agent IPC launch source patch local PASS, Windows native CI/installed proof PENDING. Owner process cold restore PASS after preceding manual login; reboot/negative/rollback untested; preserve current grant and production HOLD.
 
 **Previous operational summary below is historical unless explicitly reverified in the 2026-11-07 T09 receipt.**
 **Safety state:** **SSO OFF / GOLDABV2 LAB PUBLIC mTLS LIVE (2026-11-05)**; Plugin/Operator base unchanged, isolated hardened TLS sidecar active, old plaintext15583 absent and public HTTPS200. Automatic rollback disarmed, manual rollback preserved. Scoped firewall15584 user timer is ENABLED/ACTIVE and successfully restored removed rule; actual VPS reboot NOT tested, disk rules.v4 still read-only and unchanged. No CA signer private key on ARM; Gold main UAT/production untouched.
@@ -1935,3 +1935,7 @@ NEXT F16/P03: owner-initiated pending request and real Local Wall B approval whe
 ## 2026-11-08 — T11-F16/P03 real Owner Wall B, Windows command PASS
 
 For exact online S9X0R0 = DESKTOP-VA16D27, new AB V2 Agent request (reused=false) was issued; Owner entered and approved B on local Wall and reported Done; helper recovered protocol=abv2, ready for the same Windows; held session resumed; PowerShell execution exit 0 at 2026-11-08T12:25:34+07:00; /approve HTTP 200. Positive real Owner B path PASS (not synthetic). See docs/project-book/LIGHT_REMOTE_T11_F16_P03_REAL_OWNER_B_APPROVAL_20261108.md. No B secret recorded; native vault persistence, negative physical authorization, publisher signature and physical rollback remain untested. No production/feed changes.
+
+## 2026-11-08 — T11-F16/P04 Owner process cold restore PASS; native Agent bridge source fix
+
+Owner clarified the earlier OWNER VERIFIED UI followed MANUAL browser login. After that login, only Desktop V4 PID 9492 was stopped and installed Desktop exe relaunched PID 15208; Owner returned to VERIFIED without new browser login, Node Wall PID 14084 and 5491 unchanged. App-process cold restore PASS, entire Windows reboot / revoked Owner negatives NOT tested. Native A/B screen still unavailable; Windows WaitNamedPipe returned ERROR_FILE_NOT_FOUND=2 for fixed same-host bridge pipe. Root cause: #649 frontend compiled native A/B ON, but integrated C# AgentHost/Supervisor/Tray launches did not pass Node Agent's opt-in flag. New SOURCE-only GoldABV2-profile-guarded launcher env helper + C# offline selftest + Windows CI assertions; local Node tests PASS, Windows C# CI and physical native UI PENDING. Detailed evidence: docs/project-book/LIGHT_REMOTE_T11_F16_P04_OWNER_RESTORE_NATIVE_ABV2_LAUNCH_20261108.md. No installed Agent/Wall replacement, grant, B or production mutation.

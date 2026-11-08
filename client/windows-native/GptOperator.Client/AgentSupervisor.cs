@@ -212,6 +212,7 @@ internal sealed class AgentSupervisor : IDisposable
         psi.Environment["OPERATOR_AGENT_BASE_URL"] = connection.BridgeUrl;
         psi.Environment["OPERATOR_AGENT_HUB_URL"] = connection.HubUrl;
         AgentHost.ConfigureRealRemoteEnvironment(psi);
+        AgentHost.ConfigureDesktopOwnerAbv2Environment(psi);
         return psi;
     }
     private static async Task<(int ExitCode, string Stdout, string Stderr)> RunAgentAsync(string arguments, CancellationToken cancellationToken, bool allowFailure = false)
