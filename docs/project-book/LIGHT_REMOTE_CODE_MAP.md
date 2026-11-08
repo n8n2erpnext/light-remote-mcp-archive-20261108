@@ -1159,3 +1159,10 @@ deploy/scripts/selftest-t11-owner-verify-wait.mjs normalizes Windows CRLF on rea
 - plugin-server/desktop-owner-token-v4.mjs, client/desktop-v4/src/lib/native-activity.ts: source-specific policy validation (TTL, terminalMs, immutable=false), deny forgery/cross-kind. Test desktop-owner-token-v4.test.mjs, native-activity.test.ts.
 - client/desktop-v4/src/FeatureScreens.tsx: fetch Owner session history even when <=200, disclose 7-day renewed Redis TTL separately from terminal prune; not immutable. Test FeatureScreens.retention.test.tsx.
 - deploy/scripts/selftest-t11-owner-session-retention-source.mjs: source boundary. Gold GC/Windows Tray workflows source-gate regressions. docs/project-book/LIGHT_REMOTE_T11_F15_H3_SESSION_RETENTION_CONTRACT_20261107.md: design/provenance and non-authorized immutable audit.
+
+## 2026-11-08 — T11-F16/P01 Windows physical Owner/B artifact-intake readiness
+- deploy/scripts/f16-owner-uat-artifact-preflight.mjs: read-only offline PE-header, sidecar filename, streamed inner Setup.exe SHA256, exact declared git SHA and false physical/signature/B assurance marker; no install/network/vault/write. Negative tests deploy/scripts/f16-owner-uat-artifact-preflight.test.mjs.
+- deploy/scripts/selftest-t11-f16-owner-uat-source.mjs: source guard ties Windows hash->F16 receipt->complete upload, verifies no installer/browser/network mutation and Rust Owner native-vault boundary.
+- .github/workflows/windows-native-client.yml: full integrated Windows installer CI after hash runs F16 verifier and tests; uploads F16_OWNER_UAT_INTAKE.json with setup and SHA256SUMS into the same ZIP artifact, not a release signature.
+- .github/workflows/gold-connection-lifecycle-gc.yml: F16 negative tests and source-only gate.
+- docs/project-book/LIGHT_REMOTE_T11_F16_OWNER_B_PHYSICAL_ACCEPTANCE_READINESS_20261108.md: explicit physical UAT test matrix, human Owner/B and backup/rollback STOP gates; no live permission.
