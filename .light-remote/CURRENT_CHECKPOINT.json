@@ -1,7 +1,7 @@
 {
   "schemaVersion": "light-remote.current-checkpoint.v1",
   "updatedDate": "2026-11-08",
-  "status": "T11_F16_P02_GOLD_MIRROR_PREVIEW_SCHEMA_MISMATCH_LAB_BACKPORT_HOLD",
+  "status": "T11_F16_P02B_GOLD_MIRROR_LAB_PREVIEW_DEPLOYED_REAL_B_HOLD",
   "branch": "feat/goldabv2-desktop-owner-lab-20261103",
   "referenceSourceBaseline": "47556b829425784e4c1240c88f08e7272970595f",
   "documentationGovernanceCommit": "9297977b6a55e0111847d5c704105dccb4c93c18",
@@ -159,7 +159,7 @@
     "SQL045 absent from signed migrations.lock, pending authorized sequential release. Existing GoldABV2 fake Owner is unverified, verified replacement not registered. GoldABV2 no-NIC SMTP verification path unverified. Bootstrap owner must use actual current Admin account ID, NOT OPERATOR_ACCOUNT_ID.",
     "Device-local Wall activity source is not deployed in GoldABV2 Lab or Windows/macOS until independent source CI and native installed acceptance"
   ],
-  "nextAction": "Physical Windows #649 installed and Local Wall 5491 healthy; ABV2 Lab active t08-617-operator-0f3c2ee1-STAGED signed preview lacks ownerConsentRequired Boolean required by client. NEXT with explicit Owner approval: isolated LAB Operator minimal backport, tested and rollback-ready; no new B/relink. F16/P01 CI SUCCESS; F16/P02 Owner/B remains BLOCKED; production HOLD.",
+  "nextAction": "ABV2 Lab new Operator candidate t11-f16p02-owner-consent-preview-20261108 ACTIVE; Windows #649 /approve now No pending requests after previous unavailability. Existing Agent and B grant live, synthetic preview+signed-approval tests PASS. NEXT F16/P03 live Owner B input when Owner initiates genuine pending request, no automatic new A/B or grant replacement; production HOLD.",
   "readFirst": [
     "docs/project-book/README.md",
     "docs/project-book/LIGHT_REMOTE_GOLD_P2_IMPLEMENTATION_HANDOFF.md",
@@ -175,7 +175,7 @@
     "treeDigest": "db3bb52458b27920d45e6ad2836d69596244187d2df6c02bbef145b1e24fc0fd",
     "trackedFiles": 1244,
     "sourceOfTruth": "staged Git blob tree (excludes docs and checkpoint)",
-    "recordedAt": "2026-11-08T04:16:39.926Z"
+    "recordedAt": "2026-11-08T05:10:06.314Z"
   },
   "sourceDocsGate": {
     "commit": "01791be27c10e0624df99876407cbfe7670ae16d",
@@ -2466,10 +2466,27 @@
     "rootCause": "active lab signedPreview lacks ownerConsentRequired; client requires Boolean, rejects response",
     "requiredChange": "add policy-derived ownerConsentRequired using goldAbV2LabWallBOnly(env) to signedPreview in isolated Lab candidate",
     "currentSourceRegression": "signed-preview and wall-preview tests PASS",
-    "labOperatorUpdated": false,
+    "labOperatorUpdated": true,
     "physicalOwnerBApproved": false,
     "signedUpdateFeed": "HOLD",
     "prodTouched": false,
-    "handoff": "docs/project-book/LIGHT_REMOTE_T11_F16_P02_WINDOWS_649_PREVIEW_SCHEMA_20261108.md"
+    "handoff": "docs/project-book/LIGHT_REMOTE_T11_F16_P02_WINDOWS_649_PREVIEW_SCHEMA_20261108.md",
+    "labNewCandidate": "/opt/light-remote-abv2-lab/t11-f16p02-owner-consent-preview-20261108",
+    "labPreviousCandidate": "/opt/light-remote-abv2-lab/t08-617-operator-0f3c2ee1-STAGED",
+    "previewPatch": "ownerConsentRequired: !goldAbV2LabWallBOnly(env)",
+    "originalPreviewSha256": "85f6faf30ef57ebb7ba2f04b0da1c888fd69687abcf31ec451e3677ff68a4210",
+    "candidatePreviewSha256": "e161df5f74bd4c06048bf5e2830ab984ae2238f178673b2207179446e74189ce",
+    "labOperatorAndPluginActive": true,
+    "labSignedBOnlyPolicy": true,
+    "ownerConsentRequired": false,
+    "candidateSignedPreviewFixture": "PASS",
+    "candidateSignedApprovalFixture": "PASS (synthetic B)",
+    "rollbackScript": "/root/light-remote-f16p02-owner-consent-20261108/rollback_operator.py",
+    "rollbackExecuted": false,
+    "windowsApprovalPage": "No pending requests; error resolved",
+    "windowsShortId": "S9X0R0",
+    "existingAgentOnline": true,
+    "newLiveBApproval": "NOT TESTED; empty pending list",
+    "productionTouched": false
   }
 }
