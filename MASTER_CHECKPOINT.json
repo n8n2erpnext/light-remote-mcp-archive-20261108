@@ -1,6 +1,6 @@
 {
   "schemaVersion": "light-remote.master-checkpoint.v1",
-  "updatedAt": "2026-11-08T10:28:09.307114+00:00",
+  "updatedAt": "2026-11-08T10:33:49.677812+00:00",
   "version": "0.10.0-dev.1",
   "phase": "F_OWNER_REVIEW",
   "status": "BASELINE_CI_AND_SCOPED_DEV_VERIFIED_OWNER_ACCEPTANCE_PENDING",
@@ -47,7 +47,8 @@
       "artifactId": 13613101863,
       "zipSha256": "5aef8c6071ddb36f8df888d223812e7a3bdf4f4f149cc49ee2a6812bdda0e76c",
       "installerSha256": "2c2c7a8a94638a1dbbed378a289d562d53b696a1dcece6d6684f39ca5dc6e41e",
-      "manifest": "docs/evidence/windows-build-manifest.json"
+      "manifest": "docs/evidence/windows-build-manifest.json",
+      "verifiedOnVps": true
     },
     "dev": {
       "candidateId": "lru-eb6b2e6eee-100808",
@@ -83,5 +84,6 @@
     "ARM": "all project source per Owner",
     "AMD": "OUT_OF_SCOPE per Owner"
   },
-  "nextAction": "Review the concrete baseline and listed missing scopes; plan one controlled Windows/new-backend acceptance, then verify repository recreation/restore preflight and obtain explicit Owner conversion confirmation. Do not reset GitHub yet."
+  "nextAction": "Review the concrete baseline and listed missing scopes; plan one controlled Windows/new-backend acceptance, then verify repository recreation/restore preflight and obtain explicit Owner conversion confirmation. Do not reset GitHub yet.",
+  "receiptNote": "Documentation/evidence-only commits may follow the immutable build source commit; native inputs remain pinned."
 }

@@ -19,3 +19,5 @@ Observed old DBs by READ ONLY inspection: A/B Lab schema43 + Owner table; UAT sc
 Current phase: **F — Owner review/acceptance of the prepared baseline**. Repository deletion/recreation, official-source cutover and runtime traffic cutover have **not** occurred. They require the later Owner confirmation and verified recreation/config/secret restore capability. Never replace old history by an implicit force-push. Connected tools can push source, but repository create/delete and full administrative setting export have not been established; browser access timed out. These are explicit conversion prerequisites.
 
 Read MASTER_CHECKPOINT.json, PROJECT_HANDOFF.md, FEATURE_STATUS_MATRIX.md and KNOWN_ISSUES.md for current scope. Historical lane/checkpoint documents have no current authority.
+
+Installer bytes and ZIP were independently hashed in recovery storage and matched the accepted CI manifest. The immutable build source remains unchanged by this evidence receipt.
