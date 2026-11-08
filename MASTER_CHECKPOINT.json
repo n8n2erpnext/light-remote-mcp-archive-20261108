@@ -14,7 +14,13 @@
   "version": "0.10.0-dev.1",
   "nextAction": "Push non-destructive CI-only validation ref from independent Git, verify exact Windows/native artifacts; keep old repository/runtime intact until reconstruction readiness and final Owner approval.",
   "evidence": {
-    "newCI": "NOT_RUN",
+    "newCI": {
+      "run": 42466304367,
+      "commit": "963c5698c5ca06ea2ffce16c646dcc2a949a32f2",
+      "core": "PASS",
+      "desktopWindows": "same obsolete branch-name assertion in packaging contract; corrected and targeted PASS",
+      "nativeArtifact": "NOT_YET_BUILT"
+    },
     "candidateIntegration": {
       "status": "PASS",
       "checks": 21,
@@ -57,7 +63,7 @@
     "destructiveOperationsPerformed": false
   },
   "legacySourceAndRuntimeChanged": false,
-  "updatedAt": "2026-11-08T09:12:02.018680+00:00",
+  "updatedAt": "2026-11-08T09:20:52.806437+00:00",
   "scope": {
     "ARM": "all project source per Owner confirmation",
     "AMD": "OUT_OF_SCOPE per Owner"

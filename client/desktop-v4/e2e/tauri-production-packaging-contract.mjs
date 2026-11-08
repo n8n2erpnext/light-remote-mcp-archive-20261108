@@ -18,8 +18,14 @@ assert.doesNotMatch(sourceCI,/--bundles nsis|light-remote-desktop-v4-UNIFIED-NSI
 assert.doesNotMatch(sourceCI,/\n  native-shell:|\n  owner-login-lab-candidate:/,
   'Old UI-only and Owner-only build variants must not exist');
 assert.match(sourceCI,/tauri build --no-bundle --features desktop-owner-login --ci/);
-const gate='feat/desktop-v4-api-integration-20261103';
-assert.ok(installerCI.includes(gate),'Full Windows installer CI must trigger for the unified V4 source branch');
+const controller=fs.readFileSync(path.join(repository,'.github/workflows/ci.yml'),'utf8');
+assert.match(controller,/branches: \[main, 'codex\/reconstruction-validation-\*'\]/,
+  'One controller must trigger baseline and CI validation refs');
+assert.match(controller,/uses: \.\/\.github\/workflows\/windows-native-client\.yml/,
+  'The controller must call the actual complete Windows installer workflow');
+assert.match(installerCI,/workflow_call:/);
+assert.match(installerCI,/LIGHT_REMOTE_BUILD_PROFILE: goldabv2-desktop-v4/,
+  'Packaging selects the explicit build profile, independent of historical branch names');
 for(const expected of [
   /Build and stage Desktop V4 in the SAME full Agent\/Wall\/RM installation/,
   /tauri build --no-bundle --features desktop-owner-login --ci/,
