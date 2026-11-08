@@ -860,3 +860,8 @@ deploy/scripts/selftest-t11-owner-verify-wait.mjs normalizes Windows CRLF on rea
 - docs/project-book/LIGHT_REMOTE_T11_F16_OWNER_B_PHYSICAL_ACCEPTANCE_READINESS_20261108.md: explicit physical UAT test matrix, human Owner/B and backup/rollback STOP gates; no live permission.
 ## 2026-11-08 — F16/P01-B Win32 realpath alias correction
 - deploy/scripts/f16-owner-uat-artifact-preflight.mjs: distinguish canonical Win32 path spelling alias from symlink. Deny symlink direct files on all OS; EXE and sidecar require identical resolved parent; retain strict raw realpath on POSIX. PE and streamed checksum validation unchanged. Local negative tests 7/7; new native Windows CI pending.
+
+## 2026-11-08 — F16/P02 Windows #649 / ABV2 Lab contract mismatch (no runtime change)
+- device-agent/operator-agent.mjs remoteAbV2PendingPreview enforces Boolean ownerConsentRequired and ownerApproveEnabled, fail closed 503 if missing.
+- device-agent/local-wall.mjs GET /api/abv2/pending maps failure into abv2_wall_preview_unavailable; device-agent/wall-ab-v2-preview.mjs renders user-facing unavailable.
+- operator-host/gold-ab-v2-signed-preview.mjs CURRENT source returns policy-derived ownerConsentRequired: !goldAbV2LabWallBOnly(env). Active ABV2 Lab t08-617-operator-0f3c2ee1-STAGED module is older and lacks the field/import. Lab source helper exists. Need additive source-compatible Lab backport + tests under separate Owner approval; no client bypass, no live server change yet.

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "light-remote.current-checkpoint.v1",
   "updatedDate": "2026-11-08",
-  "status": "T11_F16_P01_CI02_WINDOWS_INNER_EXE_GOLD_GC_PASS_PHYSICAL_OWNER_B_HOLD",
+  "status": "T11_F16_P02_WINDOWS_649_INSTALLED_ABV2_PREVIEW_SCHEMA_MISMATCH_LAB_BACKPORT_HOLD",
   "branch": "feat/desktop-v4-api-integration-20261103",
   "referenceSourceBaseline": "47556b829425784e4c1240c88f08e7272970595f",
   "documentationGovernanceCommit": "9297977b6a55e0111847d5c704105dccb4c93c18",
@@ -158,7 +158,7 @@
     "Billing-once currently verified only by existing source fixture and PostgreSQL SQL044 owner/operation unique key; no actual Agent/Paddle end-to-end. Guest Fleet adapter remains prior safety HOLD.",
     "Desktop V4 pilot needs Tauri2 IPC security spike, Owner-scoped signed API contract, browser/physical Windows10 150% visual acceptance, Figma Design Freeze before runtime replacement."
   ],
-  "nextAction": "F16/P01 source a72600f0 Windows 42443625765 SUCCESS, inner exe SHA256 05e2f28b... ZIP SHA256 72e7d431..., Gold GC 42443625768 4/4, both Docs/Truth SUCCESS. NEXT F16/P02 selected Owner Windows native login and real Local Wall B; physical installation, signed feed and production HOLD absent explicit Owner approval.",
+  "nextAction": "Physical Windows #649 installed and Local Wall 5491 healthy; ABV2 Lab active t08-617-operator-0f3c2ee1-STAGED signed preview lacks ownerConsentRequired Boolean required by client. NEXT with explicit Owner approval: isolated LAB Operator minimal backport, tested and rollback-ready; no new B/relink. F16/P01 CI SUCCESS; F16/P02 Owner/B remains BLOCKED; production HOLD.",
   "readFirst": [
     "docs/project-book/LIGHT_REMOTE_GOLDABV2_DESKTOP_V4_FULL_HANDOFF_20261106.md",
     "docs/project-book/README.md",
@@ -175,7 +175,7 @@
     "treeDigest": "e7fb9daccd1733395348aca1c89f7e745c277304a1fa5dbcc4a235f099b0ee15",
     "trackedFiles": 1358,
     "sourceOfTruth": "staged Git blob tree (excludes docs and checkpoint)",
-    "recordedAt": "2026-11-08T03:54:05.489Z"
+    "recordedAt": "2026-11-08T04:16:23.282Z"
   },
   "sourceDocsGate": {
     "commit": "01791be27c10e0624df99876407cbfe7670ae16d",
@@ -2454,5 +2454,26 @@
     "signedUpdaterFeed": "HOLD",
     "productionTouched": false,
     "next": "F16/P02 real Windows Owner B only when Owner explicitly selects/authorizes device and rollback"
+  },
+  "t11_f16_p02_649": {
+    "date": "2026-11-08",
+    "windowsInstallObserved": true,
+    "windowsName": "DESKTOP-VA16D27",
+    "localWallPort": 5491,
+    "localWallHttp": 200,
+    "goldAbv2AgentEnrolledConnected": true,
+    "existingABSessionReused": true,
+    "newBOrEnrollmentCreated": false,
+    "labInstance": "light-remote-abv2-lab-20261101",
+    "labOperatorCandidate": "t08-617-operator-0f3c2ee1-STAGED",
+    "allRequiredFeatureFlagsConfigured": true,
+    "rootCause": "active lab signedPreview lacks ownerConsentRequired; client requires Boolean, rejects response",
+    "requiredChange": "add policy-derived ownerConsentRequired using goldAbV2LabWallBOnly(env) to signedPreview in isolated Lab candidate",
+    "currentSourceRegression": "signed-preview and wall-preview tests PASS",
+    "labOperatorUpdated": false,
+    "physicalOwnerBApproved": false,
+    "signedUpdateFeed": "HOLD",
+    "prodTouched": false,
+    "handoff": "docs/project-book/LIGHT_REMOTE_T11_F16_P02_WINDOWS_649_PREVIEW_SCHEMA_20261108.md"
   }
 }
