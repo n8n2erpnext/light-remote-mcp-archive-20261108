@@ -1,7 +1,7 @@
 {
   "schemaVersion": "light-remote.current-checkpoint.v1",
-  "updatedDate": "2026-11-07",
-  "status": "T11_F15_H3_CI01_WIN_MAC_UBUNTU_WEB_GC_SUCCESS_REAL_OWNER_B_HOLD",
+  "updatedDate": "2026-11-08",
+  "status": "T11_F16_P01_READ_ONLY_INNER_INSTALLER_PREFLIGHT_SOURCE_PASS_NATIVE_CI_PENDING",
   "branch": "feat/desktop-v4-api-integration-20261103",
   "referenceSourceBaseline": "47556b829425784e4c1240c88f08e7272970595f",
   "documentationGovernanceCommit": "9297977b6a55e0111847d5c704105dccb4c93c18",
@@ -158,7 +158,7 @@
     "Billing-once currently verified only by existing source fixture and PostgreSQL SQL044 owner/operation unique key; no actual Agent/Paddle end-to-end. Guest Fleet adapter remains prior safety HOLD.",
     "Desktop V4 pilot needs Tauri2 IPC security spike, Owner-scoped signed API contract, browser/physical Windows10 150% visual acceptance, Figma Design Freeze before runtime replacement."
   ],
-  "nextAction": "H3 source 322be591: Gold GC 42366909600 4/4, Desktop Web/Ubuntu/macOS 42366909549 3/3, full Windows 42366909565 SUCCESS artifact ZIP SHA256 dc5c1eac00b1224dcdf8538f763e5fa0b69a228dfb652e50aa2b30ad9806e7f3. NEXT T11-F16 physical Owner/B readiness (actual install/B only on explicit Owner approval); indefinite audit requires separate retention-policy approval. Gold signed updater/production HOLD.",
+  "nextAction": "F16/P01 read-only inner Windows installer SHA256+PE verification and UAT no-signature/no-B manifest, Node 7/7 + static F16 source gate PASS. NEXT check exact new source GitHub Gold GC 4/4, Desktop Web/macOS/Ubuntu 3/3 and Windows full installer F16_OWNER_UAT_INTAKE.json and Docs/Truth before closure. F16/P02 real Windows Owner/B and production signed feed HOLD pending separate explicit Owner approval.",
   "readFirst": [
     "docs/project-book/LIGHT_REMOTE_GOLDABV2_DESKTOP_V4_FULL_HANDOFF_20261106.md",
     "docs/project-book/README.md",
@@ -172,10 +172,10 @@
   ],
   "sourceSync": {
     "algorithm": "sha256-git-blobs-v1",
-    "treeDigest": "e16755a80cbc1c4df375ed9a3838249be7d3ab383f8b96dc8f54353d2e980a4e",
-    "trackedFiles": 1355,
+    "treeDigest": "81df0752afd42f9eaa2e8330197642450ed5e3b019f6d421af27425ed49e81cc",
+    "trackedFiles": 1358,
     "sourceOfTruth": "staged Git blob tree (excludes docs and checkpoint)",
-    "recordedAt": "2026-11-07T11:18:59.692Z"
+    "recordedAt": "2026-11-08T03:25:17.541Z"
   },
   "sourceDocsGate": {
     "commit": "01791be27c10e0624df99876407cbfe7670ae16d",
@@ -2394,5 +2394,26 @@
     "signedGoldUpdateFeed": "HOLD",
     "productionTouched": false,
     "next": "T11-F16 physical UAT readiness only; actual real B/Windows install requires explicit Owner approval"
+  },
+  "t11_f16_p01": {
+    "date": "2026-11-08",
+    "desktopParentSha": "04c91be9b20acb111559bc687596e0e508f09011",
+    "goldParentSha": "3e0ab80c4c4f22921edb23ae53ea4d25039100ca",
+    "scope": "read-only Windows installer intake and physical Owner/B readiness",
+    "artifactVerifier": "deploy/scripts/f16-owner-uat-artifact-preflight.mjs",
+    "artifactReceiptName": "F16_OWNER_UAT_INTAKE.json",
+    "verifies": "same-dir PE header MZ/PE and streamed SHA256 against one SHA256SUMS line",
+    "sourceSha": "declared GitHub source, not cryptographically proven",
+    "localArtifactNegativeTests": "7/7 PASS",
+    "sourceGuard": "T11_F16_READ_ONLY_INNER_INSTALLER_INTAKE_AND_PHYSICAL_B_HOLD=PASS",
+    "workflowYaml": "PASS",
+    "windowsF16InnerInstallerCi": "PENDING new SHA",
+    "goldGC": "PENDING new SHA",
+    "desktopWebMacUbuntu": "PENDING new SHA",
+    "physicalWindowsOwnerB": "NOT TESTED",
+    "authenticodeAndPublisher": "NOT VERIFIED",
+    "goldSignedUpdateFeed": "HOLD",
+    "productionTouched": false,
+    "acceptancePlan": "docs/project-book/LIGHT_REMOTE_T11_F16_OWNER_B_PHYSICAL_ACCEPTANCE_READINESS_20261108.md"
   }
 }

@@ -130,6 +130,9 @@ on:
       - 'lib/gold-session-redis.mjs'
       - 'lib/gold-session-retention.test.mjs'
       - 'deploy/scripts/selftest-t11-owner-session-retention-source.mjs'
+      - 'deploy/scripts/f16-owner-uat-artifact-preflight.mjs'
+      - 'deploy/scripts/f16-owner-uat-artifact-preflight.test.mjs'
+      - 'deploy/scripts/selftest-t11-f16-owner-uat-source.mjs'
       - 'deploy/scripts/selftest-t11-owner-durable-activity-source.mjs'
       - 'deploy/scripts/selftest-t11-owner-pg-history-pg.mjs'
       - 'deploy/scripts/ci-gold-epoch-pg.mjs'
@@ -1460,6 +1463,34 @@ jobs:
             Write-Host "windows-compact-installer-sha256=$compactHash"
           }
 
+      # F16 is an intake/read-only artifact check, NOT Owner/B/physical acceptance.
+      # It runs after installer install/update/rollback/uninstall CI tests and
+      # records the *inner* Setup.exe hash; GitHub artifact ZIP has another hash.
+      - name: F16 verify complete Setup.exe artifact intake (no install)
+        if: github.ref_name == 'feat/desktop-v4-api-integration-20261103'
+        shell: pwsh
+        run: |
+          node --test deploy/scripts/f16-owner-uat-artifact-preflight.test.mjs
+          if ($LASTEXITCODE -ne 0) { throw 'F16 offline intake negative regression failed' }
+          node deploy/scripts/selftest-t11-f16-owner-uat-source.mjs
+          if ($LASTEXITCODE -ne 0) { throw 'F16 no-install Owner/B scope boundary failed' }
+          $dir = Split-Path $env:WINDOWS_INSTALLER -Parent
+          $sidecar = Join-Path $dir 'SHA256SUMS.txt'
+          $receiptPath = Join-Path $dir 'F16_OWNER_UAT_INTAKE.json'
+          $json = node deploy/scripts/f16-owner-uat-artifact-preflight.mjs --installer $env:WINDOWS_INSTALLER --checksums $sidecar --source-sha $env:GITHUB_SHA
+          if ($LASTEXITCODE -ne 0) { throw 'F16 installer PE/hash intake rejected' }
+          $receipt = $json | ConvertFrom-Json
+          if ($receipt.sourceShaDeclared -ne $env:GITHUB_SHA -or
+              $receipt.disposition -ne 'artifact_integrity_only_not_physical_acceptance' -or
+              $receipt.physicalWindowsAccepted -ne $false -or
+              $receipt.ownerBApproved -ne $false -or
+              $receipt.authenticodeSignatureVerified -ne $false) {
+            throw 'F16 artifact receipt falsely claims physical, signature or B authority'
+          }
+          [System.IO.File]::WriteAllText($receiptPath, $json, [System.Text.UTF8Encoding]::new($false))
+          Write-Host "F16_OFFLINE_INSTALLER_INTAKE=PASS source=$($receipt.sourceShaDeclared) inner_exe_sha256=$($receipt.installerSha256)"
+          Write-Host 'F16_PHYSICAL_OWNER_B=NOT_TESTED; SIGNED_FEED=HOLD'
+
       - name: Upload legacy Windows installers (non-V4 branches only)
         if: github.ref_name != 'feat/desktop-v4-api-integration-20261103'
         uses: actions/upload-artifact@v4
@@ -1479,5 +1510,6 @@ jobs:
           path: |
             dist/windows/installer/Light-Remote-MCP-Setup-x64.exe
             dist/windows/installer/SHA256SUMS.txt
+            dist/windows/installer/F16_OWNER_UAT_INTAKE.json
           if-no-files-found: error
           retention-days: 14
