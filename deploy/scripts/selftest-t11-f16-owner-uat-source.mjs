@@ -18,6 +18,11 @@ assert.match(script,/physicalWindowsAccepted:false/);
 assert.match(script,/createReadStream/);
 assert.match(script,/pe_signature_invalid/);
 assert.match(script,/checksum_mismatch/);
+// Win32 realpath normalizes existing regular file aliases; lstat still rejects
+// direct symlink files and both resolved parent directories must match.
+assert.match(script,/process\.platform!=='win32'&&resolved!==path\.resolve\(target\)/);
+assert.match(script,/st\.isSymbolicLink\(\)/);
+assert.match(script,/path\.dirname\(exe\.path\)!==path\.dirname\(sums\.path\)/);
 assert.doesNotMatch(script,/node:child_process|\bspawn\s*\(|\bfetch\s*\(|\bhttps?\.get\s*\(|\bhttps?\.request\s*\(/);
 assert.match(test,/corruption|tampered|mismatched checksums/);
 assert.match(windows,/node --test deploy\/scripts\/f16-owner-uat-artifact-preflight\.test\.mjs/);

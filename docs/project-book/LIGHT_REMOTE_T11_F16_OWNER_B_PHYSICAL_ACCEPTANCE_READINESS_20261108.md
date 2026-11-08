@@ -42,3 +42,7 @@ These rows are **PENDING**, not passed by simulated GitHub hosted-runner tests. 
 ## 5. Decision and next step
 
 F16/P01 is complete only when the new exact SHA CI runs prove the artifact intake check and the documentation is mirrored. F16/P02 **physical Owner/B acceptance remains blocked until a separate, explicit Owner authorization for the selected Windows device**. Do not auto-install anything, generate new B, enable a release feed or infer physical acceptance from GitHub CI. If any acceptance row fails, stop and preserve prior known-good state for Owner-directed rollback; do not claim success from a partial log.
+
+## 2026-11-08 — Windows F16 path alias CI correction
+
+Original Windows run 42442668328 FAILED during F16 synthetic tests (6/7 failed f16_intake_redirected_path), so no real-EXE F16 receipt was generated. Windows realpath may normalize a regular file path differently from path.resolve. Corrected source still denies symlinked EXE/sidecar files via lstat and compares their resolved directories, but checks raw realpath spelling only on POSIX. PE signature and SHA256 comparison are unchanged. New exact Windows CI must pass before calling F16 accepted. No physical B or Authenticode proof is created.

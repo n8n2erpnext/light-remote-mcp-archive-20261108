@@ -17,8 +17,12 @@ async function fileInfo(target,expectedName){
  const st=await lstat(target).catch(()=>fail('file_missing'));
  if(!st.isFile()||st.isSymbolicLink())fail('file_type_invalid');
  const resolved=await realpath(target);
- if((process.platform==='win32'?resolved.toLowerCase():resolved)!==
-    (process.platform==='win32'?path.resolve(target).toLowerCase():path.resolve(target)))
+ // Windows realpath may return extended-length or short-name aliases for
+ // an ordinary file; spelling equality with path.resolve is NOT a safe Win32
+ // symlink test. lstat above rejects a symlinked *file* on both platforms.
+ // Keep strict resolved equality on POSIX, and compare resolved directories
+ // for the EXE+sidecar pair below on all platforms.
+ if(process.platform!=='win32'&&resolved!==path.resolve(target))
   fail('redirected_path');
  return {size:st.size,path:resolved};
 }

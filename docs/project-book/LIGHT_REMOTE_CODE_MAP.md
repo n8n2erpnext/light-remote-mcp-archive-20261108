@@ -858,3 +858,5 @@ deploy/scripts/selftest-t11-owner-verify-wait.mjs normalizes Windows CRLF on rea
 - .github/workflows/windows-native-client.yml: full integrated Windows installer CI after hash runs F16 verifier and tests; uploads F16_OWNER_UAT_INTAKE.json with setup and SHA256SUMS into the same ZIP artifact, not a release signature.
 - .github/workflows/gold-connection-lifecycle-gc.yml: F16 negative tests and source-only gate.
 - docs/project-book/LIGHT_REMOTE_T11_F16_OWNER_B_PHYSICAL_ACCEPTANCE_READINESS_20261108.md: explicit physical UAT test matrix, human Owner/B and backup/rollback STOP gates; no live permission.
+## 2026-11-08 — F16/P01-B Win32 realpath alias correction
+- deploy/scripts/f16-owner-uat-artifact-preflight.mjs: distinguish canonical Win32 path spelling alias from symlink. Deny symlink direct files on all OS; EXE and sidecar require identical resolved parent; retain strict raw realpath on POSIX. PE and streamed checksum validation unchanged. Local negative tests 7/7; new native Windows CI pending.
