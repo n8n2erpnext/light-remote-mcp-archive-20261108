@@ -4,7 +4,7 @@
 **Document status:** ACTIVE / MUST UPDATE AFTER EVERY TASK, including partial work and blocked work.
 **Created:** 2026-11-04, Asia/Ho_Chi_Minh (ICT, UTC+07).
 **Project:** Light Remote GoldABV2, Desktop V4 Native Owner Authentication, and T04 Desktop → Local Wall single sign-on.
-**Next active task:** **T11-F16/P03 actual new Agent pending B approval by Owner on Windows #649 Wall, only when initiated. F16/P02 ABV2 LAB signed-preview repair DEPLOYED and Windows /approve No pending requests.** Preserve current active grant; production/signed updater HOLD.
+**Next active task:** T11-F16/P03 real Wall B approved, AB V2 ready and Windows command PASS. Continue separate remaining F16 physical gates; preserve grant; production/signed feed HOLD.
 
 **Previous operational summary below is historical unless explicitly reverified in the 2026-11-07 T09 receipt.**
 **Safety state:** **SSO OFF / GOLDABV2 LAB PUBLIC mTLS LIVE (2026-11-05)**; Plugin/Operator base unchanged, isolated hardened TLS sidecar active, old plaintext15583 absent and public HTTPS200. Automatic rollback disarmed, manual rollback preserved. Scoped firewall15584 user timer is ENABLED/ACTIVE and successfully restored removed rule; actual VPS reboot NOT tested, disk rules.v4 still read-only and unchanged. No CA signer private key on ARM; Gold main UAT/production untouched.
@@ -1931,3 +1931,7 @@ Owner explicitly authorized the minimal ABV2 LAB Operator compatibility patch, t
 **Boundaries:** F16/P02 signed-preview fix DEPLOYED and VERIFIED on LAB and Windows. There is NO current pending Agent request, so entering B and pressing Approve on the patched LIVE Wall was NOT tested. This is not a claim of new human B grant. The synthetic signed-approval tests passed; any future real B approval must follow a genuine new Agent request and manual Owner B entry at the same Wall. Do not create or replace active A/B grant automatically. Gold production, old Gold UAT, signed updater, SSO, enrollment, Long Memory all untouched.
 
 NEXT F16/P03: owner-initiated pending request and real Local Wall B approval when Owner explicitly chooses to do so, with active 24h lease preserved until that decision. If incompatibility returns, check new signed error and use LAB-only manual rollback script.
+
+## 2026-11-08 — T11-F16/P03 real Owner Wall B, Windows command PASS
+
+For exact online S9X0R0 = DESKTOP-VA16D27, new AB V2 Agent request (reused=false) was issued; Owner entered and approved B on local Wall and reported Done; helper recovered protocol=abv2, ready for the same Windows; held session resumed; PowerShell execution exit 0 at 2026-11-08T12:25:34+07:00; /approve HTTP 200. Positive real Owner B path PASS (not synthetic). See docs/project-book/LIGHT_REMOTE_T11_F16_P03_REAL_OWNER_B_APPROVAL_20261108.md. No B secret recorded; native vault persistence, negative physical authorization, publisher signature and physical rollback remain untested. No production/feed changes.
