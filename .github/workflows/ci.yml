@@ -43,6 +43,40 @@ jobs:
         with:
           node-version: '22'
       - run: npm run check:truth
+  dependency-lock:
+    name: Committed native dependency resolution
+    needs: [changes, truth]
+    if: needs.changes.outputs.code == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Verify Owner-feature lock before expensive native builds
+        shell: bash
+        run: |
+          set +e
+          cargo metadata --manifest-path client/desktop-v4/src-tauri/Cargo.toml --features desktop-owner-login --format-version 1 --locked > "$RUNNER_TEMP/lr-cargo-metadata.json"
+          result=$?
+          set -e
+          if [ "$result" -ne 0 ]; then
+            cargo metadata --manifest-path client/desktop-v4/src-tauri/Cargo.toml --features desktop-owner-login --format-version 1 > "$RUNNER_TEMP/lr-cargo-metadata.json"
+            mkdir -p build-output/lock-resolution
+            cp client/desktop-v4/src-tauri/Cargo.lock build-output/lock-resolution/Cargo.lock
+            git diff -- client/desktop-v4/src-tauri/Cargo.lock > build-output/lock-resolution/changes.patch
+            cargo --version > build-output/lock-resolution/toolchain.txt
+            rustc --version >> build-output/lock-resolution/toolchain.txt
+            sha256sum client/desktop-v4/src-tauri/Cargo.lock > build-output/lock-resolution/SHA256SUMS
+            echo 'Generated lock is an unaccepted review candidate. Commit the reviewed lock before native builds.'
+            exit 1
+          fi
+          git diff --exit-code -- client/desktop-v4/src-tauri/Cargo.lock
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: light-remote-cargo-lock-candidate-${{ github.sha }}
+          path: build-output/lock-resolution/
+          if-no-files-found: warn
   core-contract-integration:
     name: Core, contracts, PostgreSQL/Redis integration
     needs: [changes, truth]
@@ -76,13 +110,13 @@ jobs:
           path: build-output/
           if-no-files-found: error
   desktop:
-    needs: [changes, truth]
+    needs: [changes, truth, dependency-lock]
     if: needs.changes.outputs.code == 'true'
     uses: ./.github/workflows/desktop-v4-native-ci.yml
     permissions:
       contents: read
   windows:
-    needs: [changes, truth]
+    needs: [changes, truth, dependency-lock]
     if: needs.changes.outputs.code == 'true'
     uses: ./.github/workflows/windows-native-client.yml
     permissions:

@@ -12,14 +12,17 @@
     "restoreFsck": "PASS"
   },
   "version": "0.10.0-dev.1",
-  "nextAction": "Push non-destructive CI-only validation ref from independent Git, verify exact Windows/native artifacts; keep old repository/runtime intact until reconstruction readiness and final Owner approval.",
+  "nextAction": "Resolve and review Owner-feature Cargo.lock in CI, commit it, require --locked for all native builds, then produce accepted exact-source installer.",
   "evidence": {
     "newCI": {
-      "run": 42466304367,
-      "commit": "963c5698c5ca06ea2ffce16c646dcc2a949a32f2",
+      "run": 42466803326,
+      "commit": "0b2eb2bca60a873480653fb2b52a0b002d1b4a2d",
       "core": "PASS",
-      "desktopWindows": "same obsolete branch-name assertion in packaging contract; corrected and targeted PASS",
-      "nativeArtifact": "NOT_YET_BUILT"
+      "webBrowser": "PASS",
+      "macosLinuxNative": "PASS (unlocked historical invocation)",
+      "windows": "native build/install/update smokes reached PASS; final provenance correctly rejected tracked source drift",
+      "rootCause": "Cargo.lock lacks keyring/rand/reqwest0.12 and Owner root dependencies; lock resolver candidate required",
+      "acceptedArtifact": false
     },
     "candidateIntegration": {
       "status": "PASS",
@@ -63,7 +66,7 @@
     "destructiveOperationsPerformed": false
   },
   "legacySourceAndRuntimeChanged": false,
-  "updatedAt": "2026-11-08T09:20:52.806437+00:00",
+  "updatedAt": "2026-11-08T09:41:00.259890+00:00",
   "scope": {
     "ARM": "all project source per Owner confirmation",
     "AMD": "OUT_OF_SCOPE per Owner"

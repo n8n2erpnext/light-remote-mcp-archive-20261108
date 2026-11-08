@@ -106,6 +106,6 @@ jobs:
           npm test
           node e2e/tauri-production-packaging-contract.mjs
       - name: Native source parity only (user installers come from full packaging pipelines)
-        run: npm exec -- tauri build --no-bundle --features desktop-owner-login --ci
+        run: npm exec -- tauri build --no-bundle --features desktop-owner-login --ci -- --locked
       - name: Native Owner / secure vault contract tests
-        run: cargo test --manifest-path src-tauri/Cargo.toml --features desktop-owner-login --bin light-remote-desktop-v4-pilot
+        run: cargo test --locked --manifest-path src-tauri/Cargo.toml --features desktop-owner-login --bin light-remote-desktop-v4-pilot

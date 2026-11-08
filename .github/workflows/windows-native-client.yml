@@ -761,7 +761,7 @@ jobs:
             if ($LASTEXITCODE -ne 0) { throw 'V4 Owner UI+API contract tests failed' }
             node e2e/tauri-production-packaging-contract.mjs
             if ($LASTEXITCODE -ne 0) { throw 'V4 native packaging contract failed' }
-            npm exec -- tauri build --no-bundle --features desktop-owner-login --ci
+            npm exec -- tauri build --no-bundle --features desktop-owner-login --ci -- --locked
             if ($LASTEXITCODE -ne 0) { throw 'V4 Tauri Owner + A/B + Local Wall native build failed' }
           } finally { Pop-Location }
           node --test device-agent/desktop-abv2-native-ipc-v4.test.mjs device-agent/desktop-wall-sso-native-ipc-v4.test.mjs plugin-server/desktop-owner-token-v4.test.mjs

@@ -9,7 +9,11 @@ const args=process.argv.slice(2),allowed=new Set(['--out','--platform','--artifa
 const options={};for(let i=0;i<args.length;i+=2){if(!allowed.has(args[i])||!args[i+1]||options[args[i]])throw Error('build_manifest_arguments_invalid');options[args[i]]=args[i+1];}
 const out=options['--out'];if(!out||!options['--platform'])throw Error('build_manifest_arguments_required');
 const commit=git('rev-parse','HEAD'),tree=git('rev-parse','HEAD^{tree}');
-if(!/^[a-f0-9]{40}$/.test(commit)||git('status','--porcelain','--untracked-files=no'))throw Error('build_clean_exact_commit_required');
+const drift=git('status','--porcelain','--untracked-files=no');
+if(!/^[a-f0-9]{40}$/.test(commit)||drift){
+ console.error('UNIFIED_TRACKED_SOURCE_DRIFT='+drift);
+ throw Error('build_clean_exact_commit_required');
+}
 const project=JSON.parse(fs.readFileSync(path.join(root,'project.manifest.json'),'utf8'));
 const lockPaths=['package-lock.json','plugin-server/package-lock.json','client/desktop-v4/package-lock.json','client/desktop-v4/src-tauri/Cargo.lock','platform-v2/sql/migrations.lock.json','config/endpoints.json'];
 const sha=async file=>{const h=crypto.createHash('sha256');for await(const chunk of fs.createReadStream(file))h.update(chunk);return h.digest('hex');};
