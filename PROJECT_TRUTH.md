@@ -13,3 +13,5 @@ Next: finish reproducible contracts/schema/DEV profile and one CI orchestrator; 
 Current verification step: run the exact-commit disposable DEV bootstrap and consolidate final regression evidence. New native CI and physical acceptance remain NOT_RUN. Official documents are the root documents listed in PROJECT_HANDOFF.md; historical documents under docs/history have no current authority.
 
 Isolated DEV attempt 1 applied core 001..043 and Owner extension successfully. Redis image UID could not read the private mounted config; fixture-only permissions corrected without weakening application credential permissions or existing services. Retrying from a clean commit. CI now skips native rebuilds for truth/document-only updates.
+
+Full automated suite completed: Node units +69 source script invocations exited successfully; Windows-only runtime checks explicitly skipped on ARM. Real DEV proved Portal/PKCE/snapshot and five typed pages. The non-Owner negative expects a 303 login redirect without a code. Next candidate adds a real separately enrolled Agent and Local Wall, with canonical packaged profile binding and signed heartbeat/connect.

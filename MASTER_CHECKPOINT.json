@@ -15,7 +15,7 @@
   "nextAction": "Commit independent baseline, execute exact-commit private DEV integration, fix real failures, then native CI candidate.",
   "evidence": {
     "newCI": "NOT_RUN",
-    "candidateIntegration": "Attempt 1: fresh core001..043 and owner extension PASS; Redis config UID read denied; fixture-only bootstrap corrected; retry pending",
+    "candidateIntegration": "Attempt2: 14 real API checks PASS, non-Owner redirect expectation corrected; adding real Agent enrollment/Wall and positive mTLS ticket issue",
     "newPhysicalAcceptance": "NOT_RUN",
     "dependencyInstall": "3/3 PASS from lockfiles",
     "initialCoreUnitFiles": "29 files PASS",
@@ -24,12 +24,13 @@
     "sourceRegressionsFirst": "58/66 PASS; packaging/legacy CI assertions adapted; rerun in progress",
     "releaseArchive": "22 releases / 421 asset records / 372 SHA256-verified objects PASS",
     "contractUnit": "3/3 PASS",
-    "sourceRegressionsSecond": "67/69 PASS; 2 targeted fixes now PASS; final consolidated run pending"
+    "sourceRegressionsSecond": "67/69 PASS; 2 targeted fixes now PASS; final consolidated run pending",
+    "automatedSuite": "70 invocations PASS (Node unit suite +69 source scripts); Windows-specific source invocations report SKIP_NON_WINDOWS on ARM, not physical PASS"
   },
   "repositoryReplacement": {
     "ownerConfirmed": false,
     "destructiveOperationsPerformed": false
   },
   "legacySourceAndRuntimeChanged": false,
-  "updatedAt": "2026-11-08T09:01:41.465653+00:00"
+  "updatedAt": "2026-11-08T09:07:39.891902+00:00"
 }

@@ -8,9 +8,9 @@ if(config.LR_UNIFIED_DISPOSABLE_DEV!=='1'||!/^[a-f0-9]{40}$/.test(config.LR_UNIF
 for(const name of ['home','run','operator-state','operator-logs','agent-state'])fs.mkdirSync('/state/'+name,{recursive:true,mode:0o700});
 Object.assign(process.env,config);
 const logs=[];const children=[];
-function start(name,file){
+function start(name,file,args=[]){
  const log=fs.openSync(`/state/${name}.private.log`,'a',0o600);logs.push(log);
- const child=spawn(process.execPath,[file],{env:process.env,stdio:['ignore',log,log]});children.push(child);
+ const child=spawn(process.execPath,[file,...args],{env:process.env,stdio:['ignore',log,log]});children.push(child);
  child.on('exit',(code,signal)=>{console.error(`${name}_exit`,code,signal);if(!stopping)stop(1)});
 }
 let stopping=false;
@@ -18,6 +18,17 @@ function stop(code=0){if(stopping)return;stopping=true;for(const child of childr
 process.on('SIGTERM',()=>stop());process.on('SIGINT',()=>stop());
 start('operator','operator-host/executor.mjs');
 start('plugin','plugin-server/server.mjs');
+// Enrollment/approval use real public APIs in acceptance. Start the actual
+// signed Agent only after its own CLI has connected its new private identity.
+const agentWatch=setInterval(()=>{
+ try{
+  const state=JSON.parse(fs.readFileSync('/state/home/.config/gpt-operator-agent-goldabv2/device.json','utf8'));
+  if(state.enrollment?.deviceId&&state.cloud?.desiredConnected===true){
+   clearInterval(agentWatch);start('agent','device-agent/operator-agent.mjs',['daemon']);
+  }
+ }catch{}
+},500);
+agentWatch.unref();
 const origin=new URL(config.LIGHT_REMOTE_PLUGIN_ORIGIN);
 const clientCert=fs.readFileSync('/state/pki/edge-client.crt');
 const clientKey=fs.readFileSync('/state/pki/edge-client.key');

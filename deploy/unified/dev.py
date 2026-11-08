@@ -113,6 +113,7 @@ def launch(args):
           'OPERATOR_INTEGRATED_HOST':'0','OPERATOR_SOCKET':'/state/run/operator.sock',
           'OPERATOR_STATE_DIR':'/state/operator-state','OPERATOR_LOG_DIR':'/state/operator-logs','OPERATOR_KEY_FILE':'/state/operator.private.json',
           'LIGHT_REMOTE_PLUGIN_ORIGIN':'https://'+host,'LIGHT_REMOTE_PLUGIN_HOST':'127.0.0.1','LIGHT_REMOTE_PLUGIN_PORT':'5495',
+          'OPERATOR_AGENT_BASE_URL':'https://'+host,'OPERATOR_AGENT_HUB_URL':'https://'+host,
           'LIGHT_REMOTE_PLUGIN_OAUTH_SECRET_FILE':'/state/plugin-oauth-secret',
           'NODE_EXTRA_CA_CERTS':'/state/pki/trust.crt','HOME':'/state/home',
           'LIGHT_REMOTE_BUILD_PROFILE':'goldabv2-desktop-v4',
