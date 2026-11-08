@@ -1,7 +1,7 @@
 {
   "schemaVersion": "light-remote.current-checkpoint.v1",
   "updatedDate": "2026-11-08",
-  "status": "T11_F16_P04_OWNER_APP_COLD_RESTORE_PASS_NATIVE_AGENT_IPC_SOURCE_FIX_WINDOWS_CI_PENDING",
+  "status": "T11_F16_P04B_INSTALLED_WINDOWS_NATIVE_ABV2_IPC_AND_OWNER_SIGNED_PREVIEW_PASS_REMAINING_GATES_OPEN",
   "branch": "feat/goldabv2-desktop-owner-lab-20261103",
   "referenceSourceBaseline": "47556b829425784e4c1240c88f08e7272970595f",
   "documentationGovernanceCommit": "9297977b6a55e0111847d5c704105dccb4c93c18",
@@ -175,7 +175,7 @@
     "treeDigest": "db3bb52458b27920d45e6ad2836d69596244187d2df6c02bbef145b1e24fc0fd",
     "trackedFiles": 1244,
     "sourceOfTruth": "staged Git blob tree (excludes docs and checkpoint)",
-    "recordedAt": "2026-11-08T05:42:21.713Z"
+    "recordedAt": "2026-11-08T06:24:45.205Z"
   },
   "sourceDocsGate": {
     "commit": "01791be27c10e0624df99876407cbfe7670ae16d",
@@ -2521,14 +2521,43 @@
     "ownerVaultValuesRead": false,
     "agentWallPidPreserved": 14084,
     "nativeAgentPipeBeforeFix": "MISSING_WIN32_ERROR_2",
-    "sourceLauncherPatch": "PROFILE_GUARDED_LOCAL_PASS",
-    "windowsNativeCompile": "PENDING",
-    "installedRuntimeNativePipe": "NOT_TESTED_WITH_PATCH",
+    "sourceLauncherPatch": "PASS_INTEGRATED_BUILD_AND_INSTALLED",
+    "windowsNativeCompile": "PASS_CI_RUN_42451833393",
+    "installedRuntimeNativePipe": "PASS_WIN10_S9X0R0",
     "nativeOwnerBApprovalUI": "NOT_TESTED",
     "wholeWindowsRebootRestore": "NOT_TESTED",
     "physicalNegativeAuthorization": "NOT_TESTED",
     "productionTouched": false,
     "signedUpdateFeed": "HOLD",
     "handoff": "docs/project-book/LIGHT_REMOTE_T11_F16_P04_OWNER_RESTORE_NATIVE_ABV2_LAUNCH_20261108.md"
+  },
+  "t11_f16_p04b_installed_windows_abv2": {
+    "date": "2026-11-08",
+    "deviceShortId": "S9X0R0",
+    "deviceName": "DESKTOP-VA16D27",
+    "sourceCommit": "4dddf5114248a014c0695e853109358039afa7ad",
+    "githubWindowsCiRun": 42451833393,
+    "windowsCi": "PASS",
+    "installedHostSha256": "58B903AE8F244F6164FB7B479A38FA11CDD0688981E1BD770F39583577D0A9FE",
+    "installedHostSelftest": {
+      "exitCode": 0,
+      "targetProfile": "pass",
+      "nativeAbv2Launch": "pass"
+    },
+    "nativeNamedPipe": "LISTENING",
+    "wallApproveHttp": 200,
+    "desktopOwnerUi": "OWNER_VERIFIED",
+    "desktopSignedOwnerAgentPreview": "AVAILABLE",
+    "physicalPendingRefresh": "PASS_ZERO_PENDING",
+    "nativeOwnerBApprovalUi": "NOT_TESTED_NO_PENDING",
+    "ownerGrantList": "NOT_VERIFIED_API_UNAVAILABLE",
+    "localWallSso": "NOT_VERIFIED",
+    "wholeWindowsRebootRestore": "NOT_TESTED",
+    "physicalRollback": "NOT_TESTED",
+    "publisherAuthenticode": "NOT_VERIFIED",
+    "signedUpdateFeed": "HOLD",
+    "productionTouched": false,
+    "newBRequested": false,
+    "handoff": "docs/project-book/LIGHT_REMOTE_T11_F16_P04B_INSTALLED_NATIVE_ABV2_ACCEPTANCE_20261108.md"
   }
 }
