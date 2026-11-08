@@ -1,7 +1,7 @@
 {
   "schemaVersion": "light-remote.master-checkpoint.v1",
   "updatedDate": "2026-11-08",
-  "phase": "D_ISOLATED_DEV_BOOTSTRAP",
+  "phase": "E_NATIVE_CI_CANDIDATE",
   "status": "IN_PROGRESS",
   "officialRepository": "n8n2erpnext/light-remote-mcp",
   "workspace": "/home/ubuntu/n8n2erpnext/light-remote-unified-20261108/source/light-remote-mcp",
@@ -12,10 +12,16 @@
     "restoreFsck": "PASS"
   },
   "version": "0.10.0-dev.1",
-  "nextAction": "Commit independent baseline, execute exact-commit private DEV integration, fix real failures, then native CI candidate.",
+  "nextAction": "Push non-destructive CI-only validation ref from independent Git, verify exact Windows/native artifacts; keep old repository/runtime intact until reconstruction readiness and final Owner approval.",
   "evidence": {
     "newCI": "NOT_RUN",
-    "candidateIntegration": "Attempt2: 14 real API checks PASS, non-Owner redirect expectation corrected; adding real Agent enrollment/Wall and positive mTLS ticket issue",
+    "candidateIntegration": {
+      "status": "PASS",
+      "checks": 21,
+      "sourceCommit": "7d87f94b7a3577cd228ab1c95217a46f3d249853",
+      "report": "evidence/dev-integration.json",
+      "physical": false
+    },
     "newPhysicalAcceptance": "NOT_RUN",
     "dependencyInstall": "3/3 PASS from lockfiles",
     "initialCoreUnitFiles": "29 files PASS",
@@ -25,12 +31,35 @@
     "releaseArchive": "22 releases / 421 asset records / 372 SHA256-verified objects PASS",
     "contractUnit": "3/3 PASS",
     "sourceRegressionsSecond": "67/69 PASS; 2 targeted fixes now PASS; final consolidated run pending",
-    "automatedSuite": "70 invocations PASS (Node unit suite +69 source scripts); Windows-specific source invocations report SKIP_NON_WINDOWS on ARM, not physical PASS"
+    "automatedSuite": {
+      "sourceCommit": "aabd0c47609d891f8fac54f7d0430c0f93ed5423",
+      "nodeTests": 270,
+      "nodePass": 270,
+      "nodeFail": 0,
+      "sourceInvocations": 69,
+      "sourceExitZero": 69,
+      "platformOnlySkipped": [
+        "Windows file lock",
+        "Windows Job Object",
+        "Windows process tree"
+      ],
+      "newPhysicalAcceptance": false
+    },
+    "recoveredSubsystemTests": {
+      "extension": "PASS",
+      "continuityMultios": "PASS",
+      "continuityP1": "FAIL optional modern Wall hook absent",
+      "continuityDeviceModules": "FAIL old history dependency; retained, not active profile"
+    }
   },
   "repositoryReplacement": {
     "ownerConfirmed": false,
     "destructiveOperationsPerformed": false
   },
   "legacySourceAndRuntimeChanged": false,
-  "updatedAt": "2026-11-08T09:07:39.891902+00:00"
+  "updatedAt": "2026-11-08T09:12:02.018680+00:00",
+  "scope": {
+    "ARM": "all project source per Owner confirmation",
+    "AMD": "OUT_OF_SCOPE per Owner"
+  }
 }

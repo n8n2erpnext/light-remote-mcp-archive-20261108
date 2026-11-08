@@ -9,3 +9,5 @@ Initial independent lockfile installs: root, Plugin and Desktop 3/3 PASS. Initia
 Real DEV integration exercises the actual Plugin, Operator, PG17 and Redis8, with Portal password/consent/PKCE, native snapshot pages, family rotation/revocation and negative actor/origin cases. It uses synthetic disposable identities and is not physical Windows acceptance.
 
 One final physical acceptance round should target only integration-sensitive behavior on the new exact artifact: native vault cold restore, IPC/B approval, Open Wall SSO, tray/relink, upgrade/rollback and RM V2. Existing historical checks are not repeatedly requested without a changed dependency or regression signal.
+
+Verified 2026-11-08T09:12:02.018680+00:00: 270 Node tests PASS and 69 portable source invocations exit zero (3 Windows runtime cases SKIP on ARM); real disposable DEV integration 21 checks PASS at `7d87f94b7a3577cd228ab1c95217a46f3d249853` including a genuinely enrolled Agent/Wall and mTLS ticket issuance. New Windows native CI and physical acceptance remain pending. Owner confirms all project source is on ARM; AMD is out of scope.
