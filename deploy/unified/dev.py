@@ -84,7 +84,9 @@ def launch(args):
         for name in state['volumes']:docker('volume','create','--label',LABEL+'='+ident,name)
         adminpw=secrets.token_hex(32);apppw=secrets.token_hex(32);migratorpw=secrets.token_hex(32);redispw=secrets.token_hex(32)
         write(bootstrap/'postgres-password',adminpw)
-        write(bootstrap/'redis.conf','bind 0.0.0.0\nprotected-mode yes\nrequirepass '+redispw+'\nappendonly yes\ndir /data\nmaxmemory 96mb\nmaxmemory-policy noeviction\n')
+        # The Redis image drops to its own UID. The file is readable inside only
+        # that container; its host parent remains mode 0700 and is not app-mounted.
+        write(bootstrap/'redis.conf','bind 0.0.0.0\nprotected-mode yes\nrequirepass '+redispw+'\nappendonly yes\ndir /data\nmaxmemory 96mb\nmaxmemory-policy noeviction\n',0o644)
         common=['--label',LABEL+'='+ident,'--network',names['net'],'--restart','no','--log-opt','max-size=5m','--log-opt','max-file=2']
         docker('run','-d','--name',names['pg'],*common,'--memory','512m','-e','POSTGRES_PASSWORD_FILE=/run/secrets/postgres-password','-v',str(bootstrap/'postgres-password')+':/run/secrets/postgres-password:ro','-v',names['pgdata']+':/var/lib/postgresql/data',image('postgres'))
         docker('run','-d','--name',names['redis'],*common,'--memory','160m','-v',str(bootstrap/'redis.conf')+':/run/secrets/redis.conf:ro','-v',names['redisdata']+':/data',image('redis'),'redis-server','/run/secrets/redis.conf')
@@ -158,6 +160,9 @@ def launch(args):
         return 0
     except BaseException:
         # Preserve private diagnostic state, clean only owned disposable resources.
+        for name in state['containers']:
+            if inspect_owned('container',name,ident):
+                write(base/(name+'.private.log'),docker('logs',name,check=False).stdout.decode(errors='replace'))
         stop(state,destroy=args.command=='test')
         raise
 

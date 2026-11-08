@@ -15,7 +15,7 @@
   "nextAction": "Commit independent baseline, execute exact-commit private DEV integration, fix real failures, then native CI candidate.",
   "evidence": {
     "newCI": "NOT_RUN",
-    "candidateIntegration": "NOT_RUN",
+    "candidateIntegration": "Attempt 1: fresh core001..043 and owner extension PASS; Redis config UID read denied; fixture-only bootstrap corrected; retry pending",
     "newPhysicalAcceptance": "NOT_RUN",
     "dependencyInstall": "3/3 PASS from lockfiles",
     "initialCoreUnitFiles": "29 files PASS",
@@ -30,5 +30,6 @@
     "ownerConfirmed": false,
     "destructiveOperationsPerformed": false
   },
-  "legacySourceAndRuntimeChanged": false
+  "legacySourceAndRuntimeChanged": false,
+  "updatedAt": "2026-11-08T09:01:41.465653+00:00"
 }

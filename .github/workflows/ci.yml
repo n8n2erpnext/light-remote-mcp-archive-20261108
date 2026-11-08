@@ -11,8 +11,42 @@ concurrency:
   group: light-remote-baseline-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  changes:
+    runs-on: ubuntu-24.04
+    outputs:
+      code: ${{ steps.scope.outputs.code }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: scope
+        env:
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+        shell: python
+        run: |
+          import os, subprocess
+          base = os.environ.get('PR_BASE') or os.environ.get('BEFORE') or ''
+          full = os.environ['EVENT'] == 'workflow_dispatch' or not base or set(base) == {'0'}
+          paths = [] if full else subprocess.check_output(['git','diff','--name-only',base,'HEAD'],text=True).splitlines()
+          def doc(p):
+              return p.endswith('.md') or p.startswith('docs/') or p in ['MASTER_CHECKPOINT.json','MIGRATION_PROVENANCE.json','feature-status.json']
+          code = full or any(not doc(p) for p in paths)
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('code=' + str(code).lower() + '\n')
+  truth:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm run check:truth
   core-contract-integration:
     name: Core, contracts, PostgreSQL/Redis integration
+    needs: [changes, truth]
+    if: needs.changes.outputs.code == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 35
     steps:
@@ -29,8 +63,6 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npm ci --ignore-scripts --no-audit --no-fund
         working-directory: plugin-server
-      - name: One current project truth
-        run: npm run check:truth
       - name: Core unit and selected source regression tests
         run: npm test
       - name: Isolated actual backend and schema integration
@@ -41,15 +73,17 @@ jobs:
         if: always()
         with:
           name: light-remote-mcp-core-${{ github.sha }}
-          path: |
-            build-output/
-            .unified/evidence/
+          path: build-output/
           if-no-files-found: error
   desktop:
+    needs: [changes, truth]
+    if: needs.changes.outputs.code == 'true'
     uses: ./.github/workflows/desktop-v4-native-ci.yml
     permissions:
       contents: read
   windows:
+    needs: [changes, truth]
+    if: needs.changes.outputs.code == 'true'
     uses: ./.github/workflows/windows-native-client.yml
     permissions:
       contents: read

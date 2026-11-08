@@ -11,3 +11,5 @@ Selected source combines reviewed current core/Desktop/native implementations wi
 Next: finish reproducible contracts/schema/DEV profile and one CI orchestrator; run independent automated and candidate integration checks. Repository deletion/recreation requires a separate final Owner confirmation after concrete reviewable results and verified recovery.
 
 Current verification step: run the exact-commit disposable DEV bootstrap and consolidate final regression evidence. New native CI and physical acceptance remain NOT_RUN. Official documents are the root documents listed in PROJECT_HANDOFF.md; historical documents under docs/history have no current authority.
+
+Isolated DEV attempt 1 applied core 001..043 and Owner extension successfully. Redis image UID could not read the private mounted config; fixture-only permissions corrected without weakening application credential permissions or existing services. Retrying from a clean commit. CI now skips native rebuilds for truth/document-only updates.
